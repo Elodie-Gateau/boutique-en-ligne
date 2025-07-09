@@ -1,13 +1,15 @@
 <?php
-require_once __DIR__ . '/../repository/UtilisateursRepository.php';
-
 
 class UtilisateursController
 {
-
     public function signIn()
     {
-        // $inscription = UtilisateursRepository::Register();
-        UtilisateursRepository::Register();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            UtilisateursRepository::register();
+        } else {
+            require './view/inscription.php';
+        }
+
     }
 }
