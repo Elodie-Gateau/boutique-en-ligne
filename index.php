@@ -25,12 +25,10 @@ require_once('./config/Router.php');
 </head>
 
 <body>
+
     <nav>
-        <ul>
-            <li><a href="index.php?page=inscription">S'inscrire</a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-        </ul>
+        <a href="index.php?page=inscription">S'inscrire</a> |
+        <a href="index.php?page=login">Se connecter</a>
     </nav>
 
     <?php Router::redirect(); ?>
