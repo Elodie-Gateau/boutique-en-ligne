@@ -5,7 +5,7 @@ class Database
 {
     private static ?PDO $pdo = null;
 
-    public static function getPdoConnection(): PDO
+    public static function connect(): PDO
     {
         if (self::$pdo === null) {
             $host = 'localhost';
