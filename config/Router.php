@@ -9,30 +9,14 @@ class Router
             switch ($_GET['page']) {
 
                 case 'inscription':
-                    require '/tp-boutique_en_ligne/view/inscription.php';
+                    $controller = new UtilisateursController();
+                    $controller->signIn();
                     break;
 
-                // case 'register':
-                //     require '../controller/UtilisateursController.php';
-                //     $controller = new UtilisateursController;
-                //     $controller->signIn();
-                //     break;
+                case 'accueil':
 
-                // case 'accueil':
-                //     require '../view/accueil.php';
-                //     break;
-                ////////////////////////
-                // EXEMPLES DE ROUTES //
-                ////////////////////////
-
-                // case 'login':
-                //     $controller = new UserController();
-                //     $controller->login();
-                //     break;
-                // case 'liste-user':
-                //     $controller = new UserController();
-                //     $controller->liste();
-                //     break;
+                    require './view/accueil.php';
+                    break;
 
                 default:
                     echo 'Page not found';

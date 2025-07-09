@@ -5,7 +5,7 @@ session_start();
 class UtilisateursRepository
 {
 
-    public static function Register()
+    public static function register()
     {
 
         $pdo = Database::connect();
@@ -33,7 +33,7 @@ class UtilisateursRepository
             'password' => $passwordHash,
         ]);
 
-        header('Location: index?page=accueil.php');
+        header('Location: index.php?page=accueil');
         exit;
     }
 
@@ -50,9 +50,6 @@ class UtilisateursRepository
         $stmt->execute([
             "email" => $_POST['email']
         ]);
-
-        echo "<pre>";
-        var_dump($email);
 
         $email = $stmt->fetch(PDO::FETCH_ASSOC);
 
