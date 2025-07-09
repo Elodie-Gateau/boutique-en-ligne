@@ -33,7 +33,7 @@ class UtilisateursRepository
             'password' => $passwordHash,
         ]);
 
-        header('Location: index?page=login.php');
+        header('Location: index?page=accueil.php');
         exit;
     }
 
@@ -50,6 +50,9 @@ class UtilisateursRepository
         $stmt->execute([
             "email" => $_POST['email']
         ]);
+
+        echo "<pre>";
+        var_dump($email);
 
         $email = $stmt->fetch(PDO::FETCH_ASSOC);
 
