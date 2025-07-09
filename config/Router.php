@@ -9,18 +9,18 @@ class Router
             switch ($_GET['page']) {
 
                 case 'inscription':
-                    require '/tp-boutique_en_ligne/view/inscription.php';
+                    require __DIR__ . '/../view/inscription.php';
                     break;
 
-                // case 'register':
-                //     require '../controller/UtilisateursController.php';
-                //     $controller = new UtilisateursController;
-                //     $controller->signIn();
-                //     break;
+                case 'register':
+                    require_once __DIR__ . '/../controller/UtilisateursController.php';
+                    $controller = new UtilisateursController;
+                    $controller->signIn();
+                    break;
 
-                // case 'accueil':
-                //     require '../view/accueil.php';
-                //     break;
+                case 'accueil':
+                    require __DIR__ . '/../view/accueil.php';
+                    break;
                 ////////////////////////
                 // EXEMPLES DE ROUTES //
                 ////////////////////////
