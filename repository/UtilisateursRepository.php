@@ -8,6 +8,8 @@ class UtilisateursRepository
     public static function register()
     {
 
+
+
         $pdo = Database::connect();
 
         $sql = "INSERT INTO utilisateurs (
@@ -24,7 +26,7 @@ class UtilisateursRepository
 
         $stmt = $pdo->prepare($sql);
 
-        $passwordHash = password_hash($_POST['password'], PASSWORD_ARGON2ID);
+        $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
         $stmt->execute([
             'nom' => $_POST['nom'],

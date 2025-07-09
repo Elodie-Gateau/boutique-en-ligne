@@ -9,6 +9,7 @@ class Router
             switch ($_GET['page']) {
 
                 case 'inscription':
+
                     $controller = new UtilisateursController();
                     $controller->signIn();
                     break;
@@ -17,6 +18,7 @@ class Router
 
                     require './view/accueil.php';
                     break;
+
 
                 default:
                     echo 'Page not found';
