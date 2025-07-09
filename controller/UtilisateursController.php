@@ -1,5 +1,5 @@
 <?php
-require_once './repository/UtilisateursRepository.php';
+require_once __DIR__ . '/../repository/UtilisateursRepository.php';
 
 
 class UtilisateursController
@@ -7,9 +7,7 @@ class UtilisateursController
 
     public function signIn()
     {
-        $inscription = UtilisateursRepository::Register();
-        require_once '../view/inscription.php';
-        // $repository = new UtilisateursRepository;
-        // $repository->register();
+        // $inscription = UtilisateursRepository::Register();
+        UtilisateursRepository::Register();
     }
 }
