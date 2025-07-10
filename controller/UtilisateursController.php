@@ -38,7 +38,7 @@ class UtilisateursController
             header('Location: index.php?page=accueil');
             exit;
         } else {
-            require __DIR__ . '/../view/user/inscription.php';
+            require './view/user/inscription.php';
         }
     }
 
@@ -61,7 +61,7 @@ class UtilisateursController
 
             UtilisateursRepository::logIn();
         } else {
-            require './view/connexion.php';
+            require './view/user/connexion.php';
         }
     }
 }

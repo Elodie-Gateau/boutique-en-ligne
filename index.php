@@ -1,17 +1,18 @@
 <?php
 
 session_start();
+
 require_once('./config/Database.php');
-require_once('./controller/CommandesCotroller.php');
+require_once('./controller/CommandesController.php');
 require_once('./controller/ProduitsController.php');
 require_once('./controller/UtilisateursController.php');
 require_once('./model/Commandes.php');
 require_once('./model/DetailCommande.php');
 require_once('./model/Produits.php');
-require_once('./model/Utilisateurs.php');
+require_once('./model/Utilisateur.php');
 require_once('./repository/CommandesRepository.php');
 require_once('./repository/DetailCommandeRepository.php');
-require_once('./repository/ProduitsRepsitory.php');
+require_once('./repository/ProduitsRepository.php');
 require_once('./repository/UtilisateursRepository.php');
 require_once('./config/Router.php');
 require_once('./utils/utils.php');
