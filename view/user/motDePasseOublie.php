@@ -1,2 +1,5 @@
-<?php
-echo "ma page de mot de passe oublié";
+<?php require_once './view/layout/head.php' ?>
+
+<section class="principal formulaire">
+
+</section>

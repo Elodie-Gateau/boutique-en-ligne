@@ -12,14 +12,23 @@
     <div class="success"><?= $message ?></div>
 <?php endif; ?>
 
+
 <section class="products">
 
-    <div class="card">
+    <div class="cards hero">
         <h2>Liste des produits</h2>
         <?php
 
         $produits = ProduitsController::listProducts();
         require 'liste-produits.php'; ?>
+    </div>
+
+    <div class="main content">
+        <h2> Main content</h2>
+    </div>
+
+    <div class="contacts">
+        <h2>Contatcs</h2>
     </div>
 
 </section>
