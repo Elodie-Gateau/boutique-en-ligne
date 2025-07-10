@@ -8,7 +8,7 @@ function passwordHash($passwordBrut)
 
 function passwordVerify($password, $passwordHach)
 {
-    password_verify($password, $passwordHach);
+    return password_verify($password, $passwordHach);
 }
 
 

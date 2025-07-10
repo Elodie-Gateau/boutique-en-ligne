@@ -18,7 +18,7 @@ class UtilisateursController
             $user->setNom($_POST['nom']);
             $user->setPrenom($_POST['prenom']);
             $user->setEmail($_POST['email']);
-            $user->setAdmin(false);
+            // $user->setAdmin("0");
 
             $password = passwordHash($_POST['password']);
 
@@ -59,7 +59,8 @@ class UtilisateursController
             UtilisateursRepository::select($user);
 
 
-            UtilisateursRepository::logIn();
+            header('Location: index.php?page=accueil');
+            exit;
         } else {
             require './view/user/connexion.php';
         }
