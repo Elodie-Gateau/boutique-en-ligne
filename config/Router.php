@@ -8,15 +8,33 @@ class Router
         if (isset($_GET['page'])) {
             switch ($_GET['page']) {
 
-                case 'inscription':
+                case 'register':
 
                     $controller = new UtilisateursController();
-                    $controller->signIn();
+                    $controller->register();
                     break;
 
                 case 'accueil':
 
                     require './view/accueil.php';
+                    break;
+
+                case 'admin':
+                    require './view/admin/administrateurProduit.php';
+                    break;
+
+                case 'addproduct':
+                    $controller = new ProduitsController();
+                    $controller->addProduct();
+                    break;
+                case 'connexion':
+                    $controller = new UtilisateursController();
+                    $controller->log();
+                    break;
+
+                case 'logout':
+                    UtilisateursRepository::logOut();
+
                     break;
 
 

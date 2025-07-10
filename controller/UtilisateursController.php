@@ -1,15 +1,67 @@
 <?php
 
+require_once __DIR__ . '/../utils/utils.php';
+
 class UtilisateursController
 {
-    public function signIn()
+    public function register()
     {
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            UtilisateursRepository::register();
-        } else {
-            require './view/inscription.php';
+        if (isset($_SESSION['email'])) {
+            header('Location: index.php?page=accueil');
+            exit;
         }
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $user = new Utilisateur;
+            $user->setNom($_POST['nom']);
+            $user->setPrenom($_POST['prenom']);
+            $user->setEmail($_POST['email']);
+            $user->setAdmin(false);
+
+            $password = passwordHash($_POST['password']);
+
+            $user->setPassword($password);
+
+            $errors = verifyForm(
+                $user->setNom($_POST['nom']),
+                $user->setPrenom($_POST['prenom']),
+                $user->setEmail($_POST['email']),
+                $user->setPassword($password)
+            );
+
+            if (empty($errors)) {
+                UtilisateursRepository::create($user);
+            }
+
+            header('Location: index.php?page=accueil');
+            exit;
+        } else {
+            require __DIR__ . '/../view/user/inscription.php';
+        }
+    }
+
+
+    public function log()
+    {
+
+        if (isset($_SESSION['email'])) {
+            header('Location: index.php?page=accueil');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = new Utilisateur;
+            $user->setEmail($_POST['email']);
+            $user->setPassword($_POST['password']);
+
+            UtilisateursRepository::select($user);
+
+
+            UtilisateursRepository::logIn();
+        } else {
+            require './view/connexion.php';
+        }
     }
 }

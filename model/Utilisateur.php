@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class Utilisateurs
+class Utilisateur
 {
 
     private int $id;

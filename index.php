@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 require_once('./config/Database.php');
 require_once('./controller/CommandesCotroller.php');
 require_once('./controller/ProduitsController.php');
@@ -13,25 +14,23 @@ require_once('./repository/DetailCommandeRepository.php');
 require_once('./repository/ProduitsRepsitory.php');
 require_once('./repository/UtilisateursRepository.php');
 require_once('./config/Router.php');
+require_once('./utils/utils.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boutique en Ligne</title>
-</head>
+<?php require_once './view/layout/head.php' ?>
 
 <body>
 
-    <nav>
-        <a href="index.php?page=inscription">S'inscrire</a> |
-        <a href="index.php?page=login">Se connecter</a>
-    </nav>
+    <?php require_once './view/layout/header.php' ?>
 
-    <?php Router::redirect(); ?>
+    <main class="main-center">
+        <?php Router::redirect(); ?>
+    </main>
+
+    <?php require_once './view/layout/footer.php' ?>
 
 </body>
 
