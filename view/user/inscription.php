@@ -1,29 +1,8 @@
-<!-- <section class="register">
-    <h2>Créer votre compte</h2>
-    <form action="index.php?page=register" method="POST">
-        <div>
-            <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" id="prenom">
-        </div>
-
-        <div>
-            <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom">
-        </div>
-        <div>
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
-        </div>
-        <div>
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password">
-        </div>
-        <input type="submit" value="S'inscrire">
-    </form>
-</section> -->
-
-
 <?php require_once './view/layout/head.php'; ?>
+
+<?php if (!empty($message)): ?>
+    <div class="success"><?= $message ?></div>
+<?php endif; ?>
 
 <div>
     <h2>Inscription</h2>
