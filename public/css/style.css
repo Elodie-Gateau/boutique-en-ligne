@@ -1,4 +1,11 @@
-.titre {
-
-    color: red;
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+.titre{
+color: red;
+}
+header, footer{
+    background-color: lightgreen;
 }
