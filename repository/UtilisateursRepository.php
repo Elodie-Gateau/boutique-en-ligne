@@ -12,14 +12,14 @@ class UtilisateursRepository
             nom,
             prenom,
             email,
-            password,
-            admin     
+            password
+            -- admin     
         ) VALUES (
             :nom,
             :prenom,
             :email,
-            :password,
-            :admin
+            :password
+            -- :admin
         );";
 
         $stmt = $pdo->prepare($sql);
@@ -29,7 +29,7 @@ class UtilisateursRepository
             'prenom' => $user->getPrenom(),
             'email' => $user->getEmail(),
             'password' => $user->getPassword(),
-            'admin' => $user->getAdmin()
+            // 'admin' => $user->getAdmin()
         ]);
     }
 
@@ -53,56 +53,23 @@ class UtilisateursRepository
             $userConnected->setPrenom($userBDD['prenom']);
             $userConnected->setEmail($userBDD['email']);
             $userConnected->setPassword($userBDD['password']);
-            $userConnected->setAdmin($userBDD['admin']);
+            // $userConnected->setAdmin($userBDD['admin']);
 
             $_SESSION['email'] = $userConnected->getEmail();
             $_SESSION['prenom'] = $userConnected->getPrenom();
-
-            header('Location: index.php?page=accueil');
-            exit;
         } else {
             echo "Le nom d'utilisateur ou le mot de passe est incorrecte.";
+            exit;
         }
     }
 
-
-
-
-
-
-    public static function logIn()
-    {
-
-        $pdo = Database::connect();
-
-        $sql = "SELECT * FROM utilisateurs WHERE email = :email";
-
-        $stmt = $pdo->prepare($sql);
-
-
-        $stmt->execute([
-            "email" => $_POST['email']
-        ]);
-
-        $email = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($email && password_verify($_POST["password"], $email["password"])) {
-            $_SESSION['email'] = $email['email'];
-
-            header('Location: index?page=accueil.php');
-            exit;
-        } else {
-            echo "Le nom d'utilisateur ou le mot de passe est incorrecte.";
-        }
-    }
 
     public static function LogOut()
     {
 
-        session_start();
         session_unset();
         session_destroy();
-        header('Location: accueil.php');
+        header('Location: index.php?page=accueil');
         exit;
     }
 }

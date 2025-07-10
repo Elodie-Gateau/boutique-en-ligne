@@ -27,7 +27,7 @@
 
 <div>
     <h2>Inscription</h2>
-    <form action="index.php?page=inscription" method="POST">
+    <form action="index.php?page=register" method="POST">
         <label for="nom">
             Nom*<br>
             <input id="nom" type="text" name="nom">
