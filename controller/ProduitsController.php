@@ -16,4 +16,9 @@ class ProduitsController
 
         ProduitsRepository::addProduct($product);
     }
+
+    public static function listProducts()
+    {
+        return ProduitsRepository::findAll();
+    }
 }
