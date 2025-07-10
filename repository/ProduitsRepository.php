@@ -30,9 +30,6 @@ class ProduitsRepository
             'type' => $product->getType(),
             'url_img' => $product->getUrl_img()
         ]);
-
-        header("Location: index.php?page=admin");
-        exit;
     }
 
     public static function listProducts()
