@@ -20,6 +20,14 @@ class Router
                     break;
 
                 case 'admin':
+                    if (
+                        !isset($_SESSION['email'])
+                        || !isset($_SESSION['admin'])
+                        || !$_SESSION['admin']
+                    ) {
+                        header('Location: index.php?page=accueil');
+                        exit;
+                    }
                     require './view/admin/adminDashboard.php';
                     break;
 

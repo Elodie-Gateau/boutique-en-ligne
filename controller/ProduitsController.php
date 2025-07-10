@@ -8,9 +8,9 @@ class ProduitsController
         if (!isset($_SESSION['email'])) {
             header('Location: index.php?page=accueil');
             exit;
-        } else {
-            require './view/admin/administrateurProduit.php';
         }
+
+        $message = '';
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = new Produit;
@@ -21,7 +21,11 @@ class ProduitsController
             $product->setUrl_img($_POST['url_img']);
 
             ProduitsRepository::addProduct($product);
+
+            $message = "Produit ajouté avec succès !";
         }
+
+        require './view/admin/administrateurProduit.php';
     }
 
     public static function listProducts()

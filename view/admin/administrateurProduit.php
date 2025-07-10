@@ -2,6 +2,11 @@
 <h2>Espace administrateur</h2>
 <section class="addProducts">
     <h3>Ajouter un produit</h3>
+
+    <?php if (!empty($message)): ?>
+        <div class="success"><?= $message ?></div>
+    <?php endif; ?>
+
     <form action="index.php?page=addproduct" method="POST">
         <div>
             <label for="nom">Nom du produit</label>
