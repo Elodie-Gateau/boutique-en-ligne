@@ -21,4 +21,12 @@ class ProduitsController
     {
         return ProduitsRepository::findAll();
     }
+
+
+    public static function searchProducts()
+    {
+        if (!empty($_POST['search'])) {
+            return ProduitsRepository::searchByNom($_POST['search']);
+        }
+    }
 }

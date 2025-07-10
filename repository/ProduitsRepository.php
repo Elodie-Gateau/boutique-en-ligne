@@ -42,4 +42,18 @@ class ProduitsRepository
         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $products;
     }
+
+    public static function searchByNom($nom)
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT * FROM produits WHERE nom LIKE :nom";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'nom' => '%' . $nom . '%'
+        ]);
+
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $products;
+    }
 }
