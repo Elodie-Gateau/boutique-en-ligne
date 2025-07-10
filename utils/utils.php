@@ -38,3 +38,9 @@ function verifyForm($nom, $prenom, $email, $password)
 
     return $errors;
 }
+
+
+function e($string)
+{
+    return htmlspecialchars($string);
+}

@@ -32,7 +32,7 @@ class ProduitsRepository
         ]);
     }
 
-    public static function listProducts()
+    public static function findAll()
     {
         $pdo = Database::connect();
         $sql = "SELECT * FROM produits";
@@ -40,5 +40,6 @@ class ProduitsRepository
         $stmt = $pdo->query($sql);
 
         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $products;
     }
 }
