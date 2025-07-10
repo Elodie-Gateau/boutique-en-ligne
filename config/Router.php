@@ -42,7 +42,11 @@ class Router
 
                 case 'logout':
                     UtilisateursRepository::logOut();
+                    break;
 
+                case 'search':
+                    $controller = new ProduitsController();
+                    $controller->searchProducts();
                     break;
 
 

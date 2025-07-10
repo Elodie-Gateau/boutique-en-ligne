@@ -1,3 +1,9 @@
+<div class="search-bar">
+    <form action="index.php?page=search" method="POST">
+        <input type="text" placeholder="Rechercher un produit">
+        <input type="submit" value="Rechercher">
+    </form>
+</div>
 <div class="produits-container">
     <?php foreach ($produits as $produit): ?>
         <div class="card">
