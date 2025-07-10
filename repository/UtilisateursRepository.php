@@ -5,10 +5,8 @@ session_start();
 class UtilisateursRepository
 {
 
-    public static function register()
+    public static function create(Utilisateur $user): void
     {
-
-
 
         $pdo = Database::connect();
 
@@ -26,17 +24,12 @@ class UtilisateursRepository
 
         $stmt = $pdo->prepare($sql);
 
-        $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
         $stmt->execute([
-            'nom' => $_POST['nom'],
-            'prenom' => $_POST['prenom'],
-            'email' => $_POST['email'],
-            'password' => $passwordHash,
+            'nom' => $user->getNom(),
+            'prenom' => $user->getPrenom(),
+            'email' => $user->getEmail(),
+            'password' => $user->getPassword(),
         ]);
-
-        header('Location: index.php?page=accueil');
-        exit;
     }
 
     public static function LogIn(PDO $pdo, string $email)

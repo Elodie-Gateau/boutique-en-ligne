@@ -1,2 +1,9 @@
 <?php
-echo "hello";
+class ProduitsController
+{
+
+    public function addProduct()
+    {
+        ProduitsRepository::addProduct();
+    }
+}

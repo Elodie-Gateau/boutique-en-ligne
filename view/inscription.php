@@ -3,7 +3,7 @@ echo "Ma page d'inscription";
 
 ?>
 
-<form action="index.php?page=inscription" method="POST">
+<form action="index.php?page=register" method="POST">
 
     <input type="text" name="prenom">
     <label for="nom">Nom</label>

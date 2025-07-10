@@ -13,6 +13,7 @@ require_once('./repository/DetailCommandeRepository.php');
 require_once('./repository/ProduitsRepsitory.php');
 require_once('./repository/UtilisateursRepository.php');
 require_once('./config/Router.php');
+require_once('./utils/utils.php');
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +28,9 @@ require_once('./config/Router.php');
 <body>
 
     <nav>
-        <a href="index.php?page=inscription">S'inscrire</a> |
+        <a href="index.php?page=register">S'inscrire</a> |
         <a href="index.php?page=login">Se connecter</a>
+        <a href="index.php?page=admin">Espace Administrateur</a>
     </nav>
 
     <?php Router::redirect(); ?>
