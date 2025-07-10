@@ -33,10 +33,11 @@ class UtilisateursController
 
             if (empty($errors)) {
                 UtilisateursRepository::create($user);
+                header('Location: index.php?page=accueil');
+                exit;
+            } else {
+                return $errors;
             }
-
-            header('Location: index.php?page=accueil');
-            exit;
         } else {
             require './view/user/inscription.php';
         }
