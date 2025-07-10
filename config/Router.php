@@ -20,12 +20,21 @@ class Router
                     break;
 
                 case 'admin':
-                    require './view/administrateurProduit.php';
+                    require './view/admin/administrateurProduit.php';
                     break;
 
                 case 'addproduct':
                     $controller = new ProduitsController();
                     $controller->addProduct();
+                    break;
+                case 'connexion':
+                    $controller = new UtilisateursController();
+                    $controller->log();
+                    break;
+
+                case 'logout':
+                    UtilisateursRepository::logOut();
+
                     break;
 
 

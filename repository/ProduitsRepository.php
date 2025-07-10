@@ -3,7 +3,7 @@
 class ProduitsRepository
 {
 
-    public static function addProduct()
+    public static function addProduct(Produit $product)
     {
 
         $pdo = Database::connect();
@@ -24,11 +24,11 @@ class ProduitsRepository
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            'nom' => $_POST['nom'],
-            'prix_unitaire' => $_POST['prix_unitaire'],
-            'description' => $_POST['description'],
-            'type' => $_POST['type'],
-            'url_img' => $_POST['url_img']
+            'nom' => $product->getNom(),
+            'prix_unitaire' => $product->getPrix(),
+            'description' => $product->getDescription(),
+            'type' => $product->getType(),
+            'url_img' => $product->getUrl_img()
         ]);
 
         header("Location: index.php?page=admin");

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class Produits
+class Produit
 {
 
     private int $id;
@@ -10,6 +10,7 @@ class Produits
     private float $prix;
     private string $description;
     private string $type;
+    private string $url_img;
 
     public function getId(): int
     {
@@ -71,6 +72,18 @@ class Produits
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getUrl_img()
+    {
+        return $this->url_img;
+    }
+
+    public function setUrl_img($url_img)
+    {
+        $this->url_img = $url_img;
 
         return $this;
     }

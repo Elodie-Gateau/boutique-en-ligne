@@ -14,12 +14,14 @@ class UtilisateursRepository
             nom,
             prenom,
             email,
-            password     
+            password,
+            admin     
         ) VALUES (
             :nom,
             :prenom,
             :email,
-            :password
+            :password,
+            :admin
         );";
 
         $stmt = $pdo->prepare($sql);
@@ -29,10 +31,48 @@ class UtilisateursRepository
             'prenom' => $user->getPrenom(),
             'email' => $user->getEmail(),
             'password' => $user->getPassword(),
+            'admin' => $user->getAdmin()
         ]);
     }
 
-    public static function LogIn(PDO $pdo, string $email)
+    public static function select(Utilisateur $user)
+    {
+        $pdo = Database::connect();
+
+        $sql = "SELECT * FROM utilisateurs WHERE email = :email";
+        $stmt = $pdo->prepare($sql);
+
+
+        $stmt->execute([
+            "email" => $user->getEmail(),
+        ]);
+
+        $userBDD = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($userBDD && passwordVerify($user->getPassword(), $userBDD['password'])) {
+            $userConnected = new Utilisateur;
+            $userConnected->setNom($userBDD['nom']);
+            $userConnected->setPrenom($userBDD['prenom']);
+            $userConnected->setEmail($userBDD['email']);
+            $userConnected->setPassword($userBDD['password']);
+            $userConnected->setAdmin($userBDD['admin']);
+
+            $_SESSION['email'] = $userConnected->getEmail();
+            $_SESSION['prenom'] = $userConnected->getPrenom();
+
+            header('Location: index.php?page=accueil');
+            exit;
+        } else {
+            echo "Le nom d'utilisateur ou le mot de passe est incorrecte.";
+        }
+    }
+
+
+
+
+
+
+    public static function logIn()
     {
 
         $pdo = Database::connect();
