@@ -20,7 +20,7 @@ class Router
                     break;
 
                 case 'admin':
-                    require './view/admin/administrateurProduit.php';
+                    require './view/admin/adminDashboard.php';
                     break;
 
                 case 'addproduct':

@@ -4,6 +4,14 @@ class ProduitsController
 
     public function addProduct()
     {
+
+        if (!isset($_SESSION['email'])) {
+            header('Location: index.php?page=accueil');
+            exit;
+        } else {
+            require './view/admin/administrateurProduit.php';
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = new Produit;
             $product->setNom($_POST['nom']);
@@ -11,10 +19,9 @@ class ProduitsController
             $product->setDescription($_POST['description']);
             $product->setType($_POST['type']);
             $product->setUrl_img($_POST['url_img']);
+
+            ProduitsRepository::addProduct($product);
         }
-
-
-        ProduitsRepository::addProduct($product);
     }
 
     public static function listProducts()
