@@ -8,6 +8,9 @@
     ?>
 </h1> -->
 
+<?php if (!empty($message)): ?>
+    <div class="success"><?= $message ?></div>
+<?php endif; ?>
 
 
 <section class="products">

@@ -12,16 +12,16 @@ class UtilisateursController
             exit;
         }
 
+        $message = '';
+        $errors = [];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $user = new Utilisateur;
             $user->setNom($_POST['nom']);
             $user->setPrenom($_POST['prenom']);
             $user->setEmail($_POST['email']);
-            // $user->setAdmin("0");
-
             $password = passwordHash($_POST['password']);
-
             $user->setPassword($password);
 
             $errors = verifyForm(
@@ -33,14 +33,11 @@ class UtilisateursController
 
             if (empty($errors)) {
                 UtilisateursRepository::create($user);
-                header('Location: index.php?page=accueil');
-                exit;
-            } else {
-                return $errors;
+                $message = "L'inscription a été réalisée avec succès !";
             }
-        } else {
-            require './view/user/inscription.php';
         }
+
+        require './view/user/inscription.php';
     }
 
 
@@ -65,5 +62,11 @@ class UtilisateursController
         } else {
             require './view/user/connexion.php';
         }
+    }
+
+    public static function listAllUsers()
+    {
+
+        return UtilisateursRepository::findAll();
     }
 }
