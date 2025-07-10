@@ -1,4 +1,4 @@
-<h1>
+<h1 class="titre">
     <?php
     if (isset($_SESSION['prenom'])) {
         echo 'Bienvenue, ' . htmlspecialchars($_SESSION['prenom']) . ' !';
