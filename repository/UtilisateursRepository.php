@@ -47,7 +47,7 @@ class UtilisateursRepository
 
         $userBDD = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($userBDD && passwordVerify($user->getPassword(), $userBDD['password'])) {
+        if ($userBDD && password_Verify($user->getPassword(), $userBDD['password'])) {
             $userConnected = new Utilisateur;
             $userConnected->setNom($userBDD['nom']);
             $userConnected->setPrenom($userBDD['prenom']);
@@ -57,10 +57,19 @@ class UtilisateursRepository
 
             $_SESSION['email'] = $userConnected->getEmail();
             $_SESSION['prenom'] = $userConnected->getPrenom();
+            $_SESSION['admin'] = $userBDD['admin'];
         } else {
             echo "Le nom d'utilisateur ou le mot de passe est incorrecte.";
             exit;
         }
+    }
+
+    public static function findAll()
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT nom, prenom, email, admin FROM utilisateurs";
+        $stmt = $pdo->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 

@@ -1,4 +1,4 @@
-<h1 class="titre">
+<!-- <h1 class="titre">
     <?php
     if (isset($_SESSION['prenom'])) {
         echo 'Bienvenue, ' . htmlspecialchars($_SESSION['prenom']) . ' !';
@@ -6,12 +6,20 @@
         echo 'Bienvenue sur la boutique !';
     }
     ?>
-</h1>
+</h1> -->
 
+<?php if (!empty($message)): ?>
+    <div class="success"><?= $message ?></div>
+<?php endif; ?>
 
 <section class="products">
-    <h2>Liste des produits</h2>
-    <?php
-    $produits = ProduitsController::listProducts();
-    require 'liste-produits.php'; ?>
+
+    <div class="card">
+        <h2>Liste des produits</h2>
+        <?php
+
+        $produits = ProduitsController::listProducts();
+        require 'liste-produits.php'; ?>
+    </div>
+
 </section>
