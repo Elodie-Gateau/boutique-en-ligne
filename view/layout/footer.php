@@ -1,6 +1,6 @@
-<footer>
-    <div class="piedDePage">
-        <p>&copy; 2025 DevFarm. Tous droits réservés.</p>
-        <p>Fait par : Elodie GATEAU / Fabien THOMAS / Maxime VERTUEUX</p>
+<footer class="main-footer">
+    <div class="main-footer__content">
+        <p>&copy; <?= date('Y') ?> DevGarden / TP - PHP MVC</p>
+        <span class="main-footer__by">Elodie / Fabien / Maxime</span>
     </div>
 </footer>

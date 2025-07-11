@@ -8,7 +8,7 @@ class DetailCommande
     private int $id;
     private int $idProduit;
     private int $idCommande;
-    private int $quantité;
+    private int $quantite;
     private float $prixTotal;
 
 
@@ -50,14 +50,14 @@ class DetailCommande
     }
 
 
-    public function getQuantité(): int
+    public function getQuantite(): int
     {
-        return $this->quantité;
+        return $this->quantite;
     }
 
-    public function setQuantité(int $quantité): self
+    public function setQuantite(int $quantite): self
     {
-        $this->quantité = $quantité;
+        $this->quantite = $quantite;
 
         return $this;
     }

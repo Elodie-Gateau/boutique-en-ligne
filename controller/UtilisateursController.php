@@ -63,10 +63,4 @@ class UtilisateursController
             require './view/user/connexion.php';
         }
     }
-
-    public static function listAllUsers()
-    {
-
-        return UtilisateursRepository::findAll();
-    }
 }
