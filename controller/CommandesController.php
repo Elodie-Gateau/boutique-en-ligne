@@ -10,11 +10,17 @@ class CommandesController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $item = new DetailCommande;
-            $item->setQuantite($_POST['quantite']);
-            $item->setIdProduit($_POST['id_produit']);
-            $item->setPrixTotal($_POST['prix_unitaire'] * $_POST['quantite']);
-            $item->setNomProduit($_POST['produit_nom']);
+            $item = [
+                'quantite' => $_POST['quantite'],
+                'produit_nom' => $_POST['produit_nom'],
+                'id_produit' => $_POST['id_produit'],
+                'prix_unitaire' => $_POST['prix_unitaire'],
+                'prix_total' => ($_POST['prix_unitaire'] * $_POST['quantite'])
+            ];
+            // $item->setQuantite();
+            // $item->setIdProduit($_POST['id_produit']);
+            // $item->setPrixTotal($_POST['prix_unitaire'] * $_POST['quantite']);
+            // $item->setNomProduit($_POST['produit_nom']);
 
             if (!isset($_SESSION['panier'])) {
                 $panier = [];
@@ -25,9 +31,9 @@ class CommandesController
             $panier[] = $item;
 
             $_SESSION['panier'] = $panier;
-
-            header('Location: index.php?page=panier');
-            exit;
+            echo "<pre>";
+            var_dump($_SESSION['panier']);
         }
+        require './view/panier.php';
     }
 }

@@ -1,30 +1,30 @@
 <?php
 
-if (isset($_SESSION['panier'])) {
-} ?>
+if (isset($_SESSION['panier'])) : ?>
 
 
-<table>
-    <tr>
-        <th>Produit</th>
-        <th>Prix unitaire</th>
-        <th>Quantité</th>
-        <th>Total</th>
-    </tr>
-
-    <?php
-
-    $panier = $_SESSION['panier'];
-
-    foreach ($panier as $item): ?>
-
+    <table>
         <tr>
-            <td> <? $item->getNomProduit(); ?> </td>
-            <td> <? $item->getPrixTotal()  / $item->getQuantite(); ?> </td>
-            <td> <? $item->getQuantite(); ?> </td>
-            <td> <? $item->getPrixTotal(); ?></td>
+            <th>Produit</th>
+            <th>Prix unitaire</th>
+            <th>Quantité</th>
+            <th>Total</th>
         </tr>
 
-    <?php endforeach; ?>
+        <?php
 
-</table>
+        $panier = $_SESSION['panier'];
+
+        foreach ($panier as $item): ?>
+
+            <tr>
+                <td> <?= $item['produit_nom']; ?> </td>
+                <td> <?= $item['prix_unitaire']; ?> </td>
+                <td> <?= $item['quantite']; ?> </td>
+                <td> <?= $item['prix_total']; ?></td>
+            </tr>
+
+        <?php endforeach; ?>
+
+    </table>
+<?php endif; ?>
