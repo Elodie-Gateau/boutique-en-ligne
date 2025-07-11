@@ -1,18 +1,20 @@
 <section class="products">
+
     <div class="products__search-bar">
         <form action="index.php?page=search" method="POST" class="products__form">
             <input type="text" class="products__input" placeholder="Rechercher un produit">
             <input type="submit" class="products__submit" value="Rechercher">
         </form>
+
     </div>
 
     <div class="products__list">
         <?php foreach ($produits as $produit): ?>
             <div class="products__card">
-                <img src="<?= e($produit['url_img']) ?>" alt="<?= e($produit['nom']) ?>" class="products__img">
-                <h3 class="products__name"><?= e($produit['nom']) ?></h3>
-                <p class="products__description"><?= e($produit['description']) ?></p>
-                <span class="products__price"><?= e($produit['prix_unitaire']) ?> €</span>
+                <img src="<?= $produit->getUrl_img(); ?>" alt="<?= $produit->getNom(); ?>" class="products__img">
+                <h3 class="products__name"><?= $produit->getNom(); ?></h3>
+                <p class="products__description"><?= $produit->getDescription(); ?></p>
+                <span class="products__price"><?= $produit->getPrix(); ?> €</span>
 
                 <?php if (isset($_SESSION['email'])): ?>
                     <form action="" method="POST" class="products__add-form">

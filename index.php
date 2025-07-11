@@ -6,6 +6,7 @@ require_once('./config/Database.php');
 require_once('./controller/CommandesController.php');
 require_once('./controller/ProduitsController.php');
 require_once('./controller/UtilisateursController.php');
+require_once('./controller/HomePageController.php');
 require_once('./model/Commandes.php');
 require_once('./model/DetailCommande.php');
 require_once('./model/Produits.php');

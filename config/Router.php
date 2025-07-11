@@ -10,7 +10,7 @@ class Router
 
                 case 'register':
 
-                    $controller = new UtilisateursController();
+                    $controller = new UtilisateursController;
                     $controller->register();
                     break;
 
@@ -34,21 +34,16 @@ class Router
                     break;
 
                 case 'addproduct':
-                    $controller = new ProduitsController();
+                    $controller = new ProduitsController;
                     $controller->addProduct();
                     break;
                 case 'connexion':
-                    $controller = new UtilisateursController();
+                    $controller = new UtilisateursController;
                     $controller->log();
                     break;
 
                 case 'logout':
                     UtilisateursRepository::logOut();
-                    break;
-
-                case 'search':
-                    $controller = new ProduitsController();
-                    $controller->searchProducts();
                     break;
 
                 default:

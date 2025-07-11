@@ -20,7 +20,7 @@ class ProduitsController
             $product->setType($_POST['type']);
             $product->setUrl_img($_POST['url_img']);
 
-            ProduitsRepository::addProduct($product);
+            ProduitsRepository::insert($product);
 
             $message = "Produit ajouté avec succès !";
         }
@@ -28,16 +28,8 @@ class ProduitsController
         require './view/admin/administrateurProduit.php';
     }
 
-    public static function listProducts()
-    {
-        return ProduitsRepository::findAll();
-    }
-
-
-    public static function searchProducts()
-    {
-        if (!empty($_POST['search'])) {
-            return ProduitsRepository::searchByNom($_POST['search']);
-        }
-    }
+    // public static function listProducts()
+    // {
+    //     return ProduitsRepository::findAll();
+    // }
 }
