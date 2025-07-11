@@ -43,6 +43,10 @@ class Router
                     $controller->panier();
                     break;
 
+                case 'commande':
+                    $controller = new CommandesController;
+                    $controller->validCommand();
+
                 case 'connexion':
                     $controller = new UtilisateursController;
                     $controller->log();

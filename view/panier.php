@@ -1,6 +1,8 @@
 <?php
 
-if (isset($_SESSION['panier'])) : ?>
+if (!isset($_SESSION['panier'])) {
+    echo "Votre panier est vide";
+} else { ?>
 
 
     <table>
@@ -14,17 +16,25 @@ if (isset($_SESSION['panier'])) : ?>
         <?php
 
         $panier = $_SESSION['panier'];
-
-        foreach ($panier as $item): ?>
+        $totalPanier = 0;
+        foreach ($panier as $item):
+        ?>
 
             <tr>
                 <td> <?= $item['produit_nom']; ?> </td>
-                <td> <?= $item['prix_unitaire']; ?> </td>
+                <td> <?= $item['prix_unitaire']; ?> €</td>
                 <td> <?= $item['quantite']; ?> </td>
-                <td> <?= $item['prix_total']; ?></td>
+                <td> <?= $item['prix_total']; ?> €</td>
             </tr>
-
+            <?php $totalPanier += $item['prix_total'] ?>
         <?php endforeach; ?>
-
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Total du panier :</td>
+            <td><?= $totalPanier ?> €</td>
+        </tr>
     </table>
-<?php endif; ?>
+
+    <a href="index.php?page=commande">Valider le panier</a>
+<?php } ?>
