@@ -49,12 +49,15 @@ class UtilisateursRepository
 
         if ($userBDD && password_Verify($user->getPassword(), $userBDD['password'])) {
             $userConnected = new Utilisateur;
+            $userConnected->setId($userBDD['id_user']);
             $userConnected->setNom($userBDD['nom']);
             $userConnected->setPrenom($userBDD['prenom']);
             $userConnected->setEmail($userBDD['email']);
             $userConnected->setPassword($userBDD['password']);
 
+            $_SESSION['id_user'] = $userBDD->getId();
             $_SESSION['email'] = $userConnected->getEmail();
+            $_SESSION['nom'] = $userBDD->getNom();
             $_SESSION['prenom'] = $userConnected->getPrenom();
             $_SESSION['admin'] = $userBDD['admin'];
         } else {

@@ -8,18 +8,29 @@ class Router
         if (isset($_GET['page'])) {
             switch ($_GET['page']) {
 
+
+                /////////////////  PAGE D'INSCRIPTION /////////////////
                 case 'register':
+
+                    if (isset($_SESSION['email'])) {
+                        header('Location: index.php?page=accueil');
+                        exit;
+                    }
 
                     $controller = new UtilisateursController;
                     $controller->register();
                     break;
 
+
+                /////////////////  PAGE D'ACCUEIL /////////////////
                 case 'accueil':
 
                     $controller = new HomePageController();
                     $controller->homeProducts();
                     break;
 
+
+                /////////////////  PAGE D'ADMINISTRATION /////////////////
                 case 'adminDashboard':
                     if (
                         !isset($_SESSION['email'])
@@ -34,6 +45,12 @@ class Router
                     break;
 
                 case 'addproduct':
+
+                    if (!isset($_SESSION['email'])) {
+                        header('Location: index.php?page=accueil');
+                        exit;
+                    }
+
                     $controller = new ProduitsController;
                     $controller->addProduct();
                     break;
@@ -48,6 +65,12 @@ class Router
                     $controller->validCommand();
 
                 case 'connexion':
+
+                    if (isset($_SESSION['email'])) {
+                        header('Location: index.php?page=accueil');
+                        exit;
+                    }
+
                     $controller = new UtilisateursController;
                     $controller->log();
                     break;
@@ -55,6 +78,8 @@ class Router
                 case 'logout':
                     UtilisateursRepository::logOut();
                     break;
+
+
 
                 default:
                     echo 'Page not found';
