@@ -31,38 +31,23 @@
                 <input type="text" name="url_img" id="url_img" class="admin-products__input">
             </div>
             <input type="submit" class="admin-products__submit" value="Ajouter le produit">
-        </form>
+            //////////////////////////////////////////////////////////
+
+
+            <form action="upload.php" method="POST" enctype="multipart/form-data">
+                <!-- Optionnel : limiter côté client à 3 Mo -->
+                <input type="hidden" name="MAX_FILE_SIZE" value="9000000000" />
+                Sélectionnez un fichier :
+                <input type="file" name="userfile" required />
+                <br><br>
+                <input type="submit" class="admin-products__submit" value="Envoyer le fichier" />
+
+
+
+
+
+                ///////////////////////////////////////////////////////
+            </form>
     </section>
     <section class="admin-products__list"></section>
 </section>
-
-<?php
-$uploaddir = '/public/images';
-$filename = basename($_FILES['admin-products__select']['name']);
-$uploadfile = $uploaddir . $filename;
-
-echo '
-<pre>';
-
-if (isset($_FILES['userfile']) && $_FILES['userfile']['error'] === UPLOAD_ERR_OK) {
-    $tmpFile = $_FILES['userfile']['tmp_name'];
-
-    // Vérification simple du type de fichier (par extension)
-    $allowed_ext = ['jpg', 'jpeg', 'png', 'pdf'];
-    $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-
-    if (!in_array($ext, $allowed_ext)) {
-        echo "Type de fichier non autorisé.";
-    } elseif (move_uploaded_file($tmpFile, $uploadfile)) {
-        echo "Le fichier a été téléchargé avec succès.\n";
-    } else {
-        echo "Échec du téléchargement.\n";
-    }
-
-    print_r($_FILES);
-} else {
-    echo "Aucun fichier envoyé ou erreur détectée.";
-}
-
-echo '</pre>';
-?>

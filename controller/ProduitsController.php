@@ -5,10 +5,7 @@ class ProduitsController
     public function addProduct()
     {
 
-        if (!isset($_SESSION['email'])) {
-            header('Location: index.php?page=accueil');
-            exit;
-        }
+
 
         $message = '';
 
