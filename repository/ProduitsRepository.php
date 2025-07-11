@@ -3,7 +3,7 @@
 class ProduitsRepository
 {
 
-    public static function addProduct(Produit $product)
+    public static function insert(Produit $product)
     {
 
         $pdo = Database::connect();
@@ -39,21 +39,28 @@ class ProduitsRepository
 
         $stmt = $pdo->query($sql);
 
-        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $products = [];
+
+        foreach ($rows as $row) {
+            $product = new Produit;
+            $product->setNom($row['nom']);
+            $product->setPrix($row['prix_unitaire']);
+            $product->setDescription($row['description']);
+            $product->setType($row['type']);
+            $product->setUrl_img($row['url_img']);
+            $products[] = $product;
+        }
         return $products;
     }
 
-    public static function searchByNom($nom)
+    public static function delete(Produit $produit)
     {
         $pdo = Database::connect();
-        $sql = "SELECT * FROM produits WHERE nom LIKE :nom";
-
+        $sql = "DELETE FROM produits WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            'nom' => '%' . $nom . '%'
+            'id' => $produit->getId()
         ]);
-
-        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $products;
     }
 }

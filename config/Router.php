@@ -10,16 +10,17 @@ class Router
 
                 case 'register':
 
-                    $controller = new UtilisateursController();
+                    $controller = new UtilisateursController;
                     $controller->register();
                     break;
 
                 case 'accueil':
 
-                    require './view/accueil.php';
+                    $controller = new HomePageController();
+                    $controller->homeProducts();
                     break;
 
-                case 'admin':
+                case 'adminDashboard':
                     if (
                         !isset($_SESSION['email'])
                         || !isset($_SESSION['admin'])
@@ -28,27 +29,22 @@ class Router
                         header('Location: index.php?page=accueil');
                         exit;
                     }
-                    require './view/admin/adminDashboard.php';
+                    $controller = new AdminController();
+                    $controller->showDashboard();
                     break;
 
                 case 'addproduct':
-                    $controller = new ProduitsController();
+                    $controller = new ProduitsController;
                     $controller->addProduct();
                     break;
                 case 'connexion':
-                    $controller = new UtilisateursController();
+                    $controller = new UtilisateursController;
                     $controller->log();
                     break;
 
                 case 'logout':
                     UtilisateursRepository::logOut();
                     break;
-
-                case 'search':
-                    $controller = new ProduitsController();
-                    $controller->searchProducts();
-                    break;
-
 
                 default:
                     echo 'Page not found';
