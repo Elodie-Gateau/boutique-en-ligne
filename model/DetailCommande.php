@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class DetailCommande
+class DetailCommande extends Commande
 {
 
     private int $id;
@@ -11,14 +11,16 @@ class DetailCommande
     private int $quantite;
     private float $prixTotal;
     private string $nomProduit;
+    private float $prixUnitaireProduit;
+    private string $DescriptionProduit;
 
 
-    public function getId(): int
+    public function getIdDetail(): int
     {
         return $this->id;
     }
 
-    public function setId(int $id): self
+    public function setIdDetail(int $id): self
     {
         $this->id = $id;
 
@@ -84,6 +86,33 @@ class DetailCommande
     public function setNomProduit(string $nomProduit): self
     {
         $this->nomProduit = $nomProduit;
+
+        return $this;
+    }
+
+
+    public function getPrixUnitaireProduit()
+    {
+        return $this->prixUnitaireProduit;
+    }
+
+    public function setPrixUnitaireProduit($prixUnitaireProduit)
+    {
+        $this->prixUnitaireProduit = $prixUnitaireProduit;
+
+        return $this;
+    }
+
+
+    public function getDescriptionProduit()
+    {
+        return $this->DescriptionProduit;
+    }
+
+
+    public function setDescriptionProduit($DescriptionProduit)
+    {
+        $this->DescriptionProduit = $DescriptionProduit;
 
         return $this;
     }

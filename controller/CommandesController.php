@@ -72,4 +72,17 @@ class CommandesController
             exit;
         }
     }
+
+
+    public function findDetailsCommand()
+    {
+        if (isset($_POST['idCommand'])) {
+            $idCommand = e($_POST['idCommand']);
+            $commande = CommandesRepository::findByIdCommand($idCommand);
+            $detailsCommand = DetailCommmandeRepository::findByIdCommand($idCommand);
+            require './view/detailCommande.php';
+        } else {
+            echo "Aucune commande trouvée.";
+        }
+    }
 }
