@@ -88,21 +88,42 @@ class UtilisateursRepository
     public static function update(Utilisateur $user)
     {
         $pdo = Database::connect();
-        $sql = "UPDATE utilisateurs SET nom = :nom, prenom = :prenom, email = :email WHERE id = :id";
+        $sql = "UPDATE utilisateurs SET nom = :nom, prenom = :prenom, email = :email, admin = :admin WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             'nom' => $user->getNom(),
             'prenom' => $user->getPrenom(),
             'email' => $user->getEmail(),
+            'admin' => $user->getAdmin() ? 1 : 0,
             'id' => $user->getId(),
         ]);
     }
 
-    public static function deleteById(int $id)
+    public static function deleteById($id)
     {
         $pdo = Database::connect();
         $sql = "DELETE FROM utilisateurs WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(['id' => $id]);
+    }
+
+    public static function findById($id)
+    {
+        $pdo = Database::connect();
+        $stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($data) {
+            $user = new Utilisateur();
+            $user->setId($data['id']);
+            $user->setNom($data['nom']);
+            $user->setPrenom($data['prenom']);
+            $user->setEmail($data['email']);
+            $user->setPassword($data['password']);
+            $user->setAdmin((bool)$data['admin']);
+        }
+
+        return $user;
     }
 }
