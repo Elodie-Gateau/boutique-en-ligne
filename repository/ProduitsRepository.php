@@ -44,6 +44,7 @@ class ProduitsRepository
 
         foreach ($rows as $row) {
             $product = new Produit;
+            $product->setId($row['id']);
             $product->setNom($row['nom']);
             $product->setPrix($row['prix_unitaire']);
             $product->setDescription($row['description']);

@@ -1,30 +1,45 @@
 <?php
 
-if (isset($_SESSION['panier'])) {
-} ?>
+if (empty($_SESSION['panier'])) {
+    echo "Votre panier est vide";
+} else { ?>
 
 
-<table>
-    <tr>
-        <th>Produit</th>
-        <th>Prix unitaire</th>
-        <th>Quantité</th>
-        <th>Total</th>
-    </tr>
-
-    <?php
-
-    $panier = $_SESSION['panier'];
-
-    foreach ($panier as $item): ?>
-
+    <table>
         <tr>
-            <td> <? $item->getNomProduit(); ?> </td>
-            <td> <? $item->getPrixTotal()  / $item->getQuantite(); ?> </td>
-            <td> <? $item->getQuantite(); ?> </td>
-            <td> <? $item->getPrixTotal(); ?></td>
+            <th>Produit</th>
+            <th>Prix unitaire</th>
+            <th>Quantité</th>
+            <th>Total</th>
         </tr>
 
-    <?php endforeach; ?>
+        <?php
 
-</table>
+        $panier = $_SESSION['panier'];
+
+        $totalPanier = 0;
+        foreach ($panier as $item):
+        ?>
+
+            <tr>
+                <td> <?= $item['produit_nom']; ?> </td>
+                <td> <?= $item['prix_unitaire']; ?> €</td>
+                <td> <?= $item['quantite']; ?> </td>
+                <td> <?= $item['prix_total']; ?> €</td>
+            </tr>
+            <?php $totalPanier += $item['prix_total'] ?>
+        <?php endforeach; ?>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Total du panier :</td>
+            <td><?php echo $totalPanier;
+                $_SESSION['total_commande'] = $totalPanier; ?> €</td>
+        </tr>
+    </table>
+    <form method="POST" action="index.php?page=panier">
+        <input type="hidden" name="action" value="vider">
+        <input type="submit" value="Vider le panier">
+    </form>
+    <a href="index.php?page=commande">Valider le panier</a>
+<?php } ?>
