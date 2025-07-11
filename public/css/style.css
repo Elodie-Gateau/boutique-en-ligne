@@ -55,9 +55,10 @@ height: 80%;
 }
 .main{
       background-color: lightgreen;
-      outline:  solid 2px rgb(80, 232, 80); 
+      outline:  solid 2px rgb(120, 224, 120); 
       /* border-radius: 5px;  */
 }
+
 .contacts{
     background-color: whitesmoke;
     border:  solid 2px white

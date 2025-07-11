@@ -50,7 +50,8 @@
 
         </div>
 
-        <div class="img background">
+        <div class="imgBackground">
+            
 
         </div>
 

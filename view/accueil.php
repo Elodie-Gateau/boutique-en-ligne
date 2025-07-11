@@ -25,6 +25,8 @@
 
     <div class="main content">
         <h2> Main content</h2>
+
+        <img src="../public/images/img_principal.jpg" alt="img">
     </div>
 
     <div class="contacts">
