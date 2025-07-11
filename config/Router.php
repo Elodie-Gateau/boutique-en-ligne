@@ -44,6 +44,7 @@ class Router
                     $controller->showDashboard();
                     break;
 
+                /////////////////  PAGE D'AJOUT PRODUIT /////////////////
                 case 'addproduct':
 
                     if (!isset($_SESSION['email'])) {
@@ -55,11 +56,20 @@ class Router
                     $controller->addProduct();
                     break;
 
+
+                /////////////////  PAGE DU PANIER /////////////////
                 case 'panier':
+
+                    if (!isset($_SESSION['email'])) {
+                        header('Location: index.php?page=accueil');
+                        exit;
+                    }
+
                     $controller = new CommandesController;
                     $controller->panier();
                     break;
 
+                /////////////////  PAGE DE CONNEXION /////////////////
                 case 'connexion':
 
                     if (isset($_SESSION['email'])) {
@@ -71,6 +81,7 @@ class Router
                     $controller->log();
                     break;
 
+                /////////////////  PAGE DE DECONNEXION /////////////////
                 case 'logout':
                     UtilisateursRepository::logOut();
                     break;
