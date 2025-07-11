@@ -8,13 +8,7 @@
 
     </div>
 
-<<<<<<< HEAD
-    <div class="main content">
-        <h2> Main content</h2>
 
-        <img src="../public/images/img_principal.jpg" alt="img">
-    </div>
-=======
     <div class="products__list">
         <?php foreach ($produits as $produit): ?>
             <div class="products__card">
@@ -22,7 +16,7 @@
                 <h3 class="products__name"><?= $produit->getNom(); ?></h3>
                 <p class="products__description"><?= $produit->getDescription(); ?></p>
                 <span class="products__price"><?= $produit->getPrix(); ?> €</span>
->>>>>>> 2bde7f057078467be6a63629be17485ace7cf683
+
 
                 <?php if (isset($_SESSION['email'])): ?>
                     <form action="" method="POST" class="products__add-form">

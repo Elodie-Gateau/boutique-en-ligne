@@ -40,25 +40,7 @@
         <button type="submit" class="register__submit">S'inscrire</button>
     </form>
 
-<<<<<<< HEAD
-                <button type="submit">S'inscrire</button>
-            </form>
-
-            <p class="form-note">
-                <small>Les champs marqués d'un * sont obligatoires.</small>
-            </p>
-
-        </div>
-
-        <div class="imgBackground">
-            
-
-        </div>
-
-</section>
-=======
     <p class="register__note">
         <small>Les champs marqués d'un * sont obligatoires.</small>
     </p>
 </div>
->>>>>>> 2bde7f057078467be6a63629be17485ace7cf683
