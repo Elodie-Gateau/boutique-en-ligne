@@ -35,12 +35,13 @@ class CommandesRepository
         $commandes = [];
 
         foreach ($rows as $row) {
+            $date = new DateTimeImmutable($row['date_commande']);
             $commande = new Commande;
             $commande->setId($row['id']);
             $commande->setIdUser($row['id_user']);
             $commande->setTotal($row['total']);
             $commande->setStatut($row['statut']);
-            $commande->setDateCommande($row['date_commande']);
+            $commande->setDateCommande($date->format('d/m/Y'));
             $commandes[] = $commande;
         }
 
@@ -60,12 +61,13 @@ class CommandesRepository
         $commandes = [];
 
         foreach ($rows as $row) {
+            $date = new DateTimeImmutable($row['date_commande']);
             $commande = new Commande;
             $commande->setId($row['id']);
             $commande->setIdUser($row['id_user']);
             $commande->setTotal($row['total']);
             $commande->setStatut($row['statut']);
-            $commande->setDateCommande($row['date_commande']);
+            $commande->setDateCommande($date->format('d/m/Y'));
             $commandes[] = $commande;
         }
 
@@ -86,12 +88,13 @@ class CommandesRepository
 
 
         if ($row) {
+            $date = new DateTimeImmutable($row['date_commande']);
             $commande = new Commande;
             $commande->setId($row['id']);
             $commande->setIdUser($row['id_user']);
             $commande->setTotal($row['total']);
             $commande->setStatut($row['statut']);
-            $commande->setDateCommande($row['date_commande']);
+            $commande->setDateCommande($date->format('d/m/Y'));
         }
 
         return $commande;
