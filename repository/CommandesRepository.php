@@ -1,6 +1,6 @@
 <?php
 
-class CommmandesRepository
+class CommandesRepository
 {
 
     public static function insert(Commande $commande)
