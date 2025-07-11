@@ -1,6 +1,6 @@
 <?php
 
-if (!isset($_SESSION['panier'])) {
+if (empty($_SESSION['panier'])) {
     echo "Votre panier est vide";
 } else { ?>
 
@@ -16,6 +16,7 @@ if (!isset($_SESSION['panier'])) {
         <?php
 
         $panier = $_SESSION['panier'];
+
         $totalPanier = 0;
         foreach ($panier as $item):
         ?>
@@ -32,9 +33,13 @@ if (!isset($_SESSION['panier'])) {
             <td></td>
             <td></td>
             <td>Total du panier :</td>
-            <td><?= number_format($totalPanier, 2, ',', '') ?> €</td>
+            <td><?php echo number_format($totalPanier, 2, ',', '');
+                $_SESSION['total_commande'] = $totalPanier; ?> €</td>
         </tr>
     </table>
-
+    <form method="POST" action="index.php?page=panier">
+        <input type="hidden" name="action" value="vider">
+        <input type="submit" value="Vider le panier">
+    </form>
     <a href="index.php?page=commande">Valider le panier</a>
 <?php } ?>
