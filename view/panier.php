@@ -22,9 +22,9 @@ if (!isset($_SESSION['panier'])) {
 
             <tr>
                 <td> <?= $item['produit_nom']; ?> </td>
-                <td> <?= $item['prix_unitaire']; ?> €</td>
+                <td> <?= number_format($item['prix_unitaire'], 2, ',', ''); ?> €</td>
                 <td> <?= $item['quantite']; ?> </td>
-                <td> <?= $item['prix_total']; ?> €</td>
+                <td> <?= number_format($item['prix_total'], 2, ',', ''); ?> €</td>
             </tr>
             <?php $totalPanier += $item['prix_total'] ?>
         <?php endforeach; ?>
@@ -32,7 +32,7 @@ if (!isset($_SESSION['panier'])) {
             <td></td>
             <td></td>
             <td>Total du panier :</td>
-            <td><?= $totalPanier ?> €</td>
+            <td><?= number_format($totalPanier, 2, ',', '') ?> €</td>
         </tr>
     </table>
 

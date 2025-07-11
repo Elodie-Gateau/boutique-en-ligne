@@ -49,16 +49,16 @@ class UtilisateursRepository
 
         if ($userBDD && password_Verify($user->getPassword(), $userBDD['password'])) {
             $userConnected = new Utilisateur;
-            $userConnected->setId($userBDD['id_user']);
+            $userConnected->setId($userBDD['id']);
             $userConnected->setNom($userBDD['nom']);
             $userConnected->setPrenom($userBDD['prenom']);
             $userConnected->setEmail($userBDD['email']);
             $userConnected->setPassword($userBDD['password']);
 
-            $_SESSION['id_user'] = $userBDD->getId();
-            $_SESSION['email'] = $userConnected->getEmail();
-            $_SESSION['nom'] = $userBDD->getNom();
+            $_SESSION['id_user'] = $userConnected->getId();
+            $_SESSION['nom'] = $userConnected->getNom();
             $_SESSION['prenom'] = $userConnected->getPrenom();
+            $_SESSION['email'] = $userConnected->getEmail();
             $_SESSION['admin'] = $userBDD['admin'];
         } else {
             echo "Le nom d'utilisateur ou le mot de passe est incorrecte.";
@@ -69,7 +69,7 @@ class UtilisateursRepository
     public static function findAllUsers()
     {
         $pdo = Database::connect();
-        $sql = "SELECT nom, prenom, email, admin FROM utilisateurs";
+        $sql = "SELECT id, nom, prenom, email, admin FROM utilisateurs";
         $stmt = $pdo->query($sql);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
@@ -83,5 +83,26 @@ class UtilisateursRepository
         session_destroy();
         header('Location: index.php?page=accueil');
         exit;
+    }
+
+    public static function update(Utilisateur $user)
+    {
+        $pdo = Database::connect();
+        $sql = "UPDATE utilisateurs SET nom = :nom, prenom = :prenom, email = :email WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'nom' => $user->getNom(),
+            'prenom' => $user->getPrenom(),
+            'email' => $user->getEmail(),
+            'id' => $user->getId(),
+        ]);
+    }
+
+    public static function deleteById(int $id)
+    {
+        $pdo = Database::connect();
+        $sql = "DELETE FROM utilisateurs WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['id' => $id]);
     }
 }
