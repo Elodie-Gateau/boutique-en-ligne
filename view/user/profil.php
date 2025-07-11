@@ -27,7 +27,12 @@
                 <td><?= $commande->getDateCommande() ?></td>
                 <td><?= $commande->getStatut() ?></td>
                 <td><?= $commande->getTotal() ?> €</td>
-                <td><a href="">Voir les détails</a></td>
+                <td>
+                    <form action="index.php?page=detailsCommande" method="POST">
+                        <input type="hidden" name="idCommand" value="<?= $commande->getId() ?>">
+                        <input type="submit" value="Voir les détails">
+                    </form>
+                </td>
             </tr>
 
         <?php } ?>

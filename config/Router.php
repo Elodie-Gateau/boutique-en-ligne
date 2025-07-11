@@ -85,6 +85,15 @@ class Router
                     $controller->validCommand();
                     break;
 
+                case 'detailsCommande':
+                    if (!isset($_SESSION['email'])) {
+                        header('Location: index.php?page=connexion');
+                        exit;
+                    }
+                    $controller = new CommandesController;
+                    $controller->findDetailsCommand();
+                    break;
+
                 // PAGE DE CONNEXION
                 case 'connexion':
                     if (isset($_SESSION['email'])) {
