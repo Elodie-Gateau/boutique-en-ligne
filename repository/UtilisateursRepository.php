@@ -53,7 +53,6 @@ class UtilisateursRepository
             $userConnected->setPrenom($userBDD['prenom']);
             $userConnected->setEmail($userBDD['email']);
             $userConnected->setPassword($userBDD['password']);
-            // $userConnected->setAdmin($userBDD['admin']);
 
             $_SESSION['email'] = $userConnected->getEmail();
             $_SESSION['prenom'] = $userConnected->getPrenom();
@@ -64,12 +63,13 @@ class UtilisateursRepository
         }
     }
 
-    public static function findAll()
+    public static function findAllUsers()
     {
         $pdo = Database::connect();
         $sql = "SELECT nom, prenom, email, admin FROM utilisateurs";
         $stmt = $pdo->query($sql);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 
 

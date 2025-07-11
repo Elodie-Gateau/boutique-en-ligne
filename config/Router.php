@@ -16,11 +16,11 @@ class Router
 
                 case 'accueil':
 
-                    $controller = new HomePageController;
-                    $controller->afficherProducts();
+                    $controller = new HomePageController();
+                    $controller->homeProducts();
                     break;
 
-                case 'admin':
+                case 'adminDashboard':
                     if (
                         !isset($_SESSION['email'])
                         || !isset($_SESSION['admin'])
@@ -29,7 +29,8 @@ class Router
                         header('Location: index.php?page=accueil');
                         exit;
                     }
-                    require './view/admin/adminDashboard.php';
+                    $controller = new AdminController();
+                    $controller->showDashboard();
                     break;
 
                 case 'addproduct':
@@ -44,12 +45,6 @@ class Router
                 case 'logout':
                     UtilisateursRepository::logOut();
                     break;
-
-                case 'search':
-                    $controller = new ProduitsController;
-                    $controller->searchProducts();
-                    break;
-
 
                 default:
                     echo 'Page not found';

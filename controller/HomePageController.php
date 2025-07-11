@@ -2,8 +2,11 @@
 
 class HomePageController
 {
-    public function afficherProducts()
+
+    public function homeProducts()
+
     {
+
         $produits = ProduitsRepository::findAll();
         require './view/accueil.php';
     }

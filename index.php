@@ -17,6 +17,9 @@ require_once('./repository/ProduitsRepository.php');
 require_once('./repository/UtilisateursRepository.php');
 require_once('./config/Router.php');
 require_once('./utils/utils.php');
+require_once('./controller/AdminController.php');
+require_once('./controller/HomePageController.php');
+require_once('./utils/utils.php');
 ?>
 
 <!DOCTYPE html>
