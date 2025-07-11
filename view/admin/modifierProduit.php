@@ -1,14 +1,10 @@
-<?php if (!empty($message)): ?>
-    <div class="register__success"><?= $message ?></div>
-<?php endif; ?>
-
 <section class="admin-products">
-    <h2 class="admin-products__title">Ajouter un produit</h2>
+    <h2 class="admin-products__title">Modifier un produit</h2>
     <section class="admin-products__add">
 
 
 
-        <form action="index.php?page=addproduct" method="POST" class="admin-products__form">
+        <form action="index.php?page=modifierProduit" method="POST" class="admin-products__form">
             <div class="admin-products__field">
                 <label for="nom" class="admin-products__label">Nom du produit</label>
                 <input type="text" name="nom" id="nom" class="admin-products__input">

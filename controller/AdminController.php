@@ -40,4 +40,27 @@ class AdminController
 
         require './view/admin/modifierUtilisateur.php';
     }
+
+    public function modifierProduit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $product = new Produit();
+            $product->setId((int)$_POST['id']);
+            $product->setNom($_POST['nom']);
+            $product->setPrix($_POST['prix_unitaire']);
+            $product->setDescription($_POST['description']);
+            $product->setType($_POST['type']);
+            $product->setUrl_img($_POST['url_img']);
+
+            ProduitsRepository::update($product);
+            header('Location: index.php?page=adminDashboard');
+            exit;
+        }
+        $user = null;
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $user = ProduitsRepository::findById((int)$_GET['id']);
+        }
+
+        require './view/admin/modifierProduit.php';
+    }
 }
