@@ -60,6 +60,10 @@ class Router
                     $controller->panier();
                     break;
 
+                case 'commande':
+                    $controller = new CommandesController;
+                    $controller->validCommand();
+
                 case 'connexion':
 
                     if (isset($_SESSION['email'])) {
