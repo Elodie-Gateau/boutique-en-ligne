@@ -53,14 +53,22 @@ class CommandesController
             $commande->setStatut('En cours de traitement');
             $commande->setDateCommande($now);
 
+            CommmandesRepository::insert($commande);
+
+            $pdo = Database::connect();
+            $idCommande = $pdo->lastInsertId();
+
             foreach ($panier as $article) {
                 $commandeParProduit = new DetailCommande;
                 $commandeParProduit->setIdProduit($article['id_produit']);
+                $commandeParProduit->setIdCommande($idCommande);
                 $commandeParProduit->setQuantite($article['quantite']);
                 $commandeParProduit->setPrixTotal($article['prix_total']);
+
+                DetailCommmandeRepository::insert($commandeParProduit);
             }
 
-            require './view/panier.php';
+            require './view/user/profil.php';
         }
     }
 }
