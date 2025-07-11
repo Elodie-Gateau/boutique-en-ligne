@@ -10,13 +10,14 @@ class Router
 
                 case 'register':
 
-                    $controller = new UtilisateursController();
+                    $controller = new UtilisateursController;
                     $controller->register();
                     break;
 
                 case 'accueil':
 
-                    require './view/accueil.php';
+                    $controller = new HomePageController;
+                    $controller->afficherProducts();
                     break;
 
                 case 'admin':
@@ -32,11 +33,11 @@ class Router
                     break;
 
                 case 'addproduct':
-                    $controller = new ProduitsController();
+                    $controller = new ProduitsController;
                     $controller->addProduct();
                     break;
                 case 'connexion':
-                    $controller = new UtilisateursController();
+                    $controller = new UtilisateursController;
                     $controller->log();
                     break;
 
@@ -45,7 +46,7 @@ class Router
                     break;
 
                 case 'search':
-                    $controller = new ProduitsController();
+                    $controller = new ProduitsController;
                     $controller->searchProducts();
                     break;
 

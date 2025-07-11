@@ -18,8 +18,16 @@
         <h2>Liste des produits</h2>
         <?php
 
-        $produits = ProduitsController::listProducts();
-        require 'liste-produits.php'; ?>
+        foreach ($produits as $produit) {
+        ?>
+            <div>
+                <img src="<?= $produit->getUrl_img(); ?>" alt="<?= $produit->getNom(); ?>">
+                <h3><?= $produit->getNom(); ?></h3>
+                <p><?= $produit->getDescription(); ?></p>
+                <span><?= $produit->getPrix(); ?> €</span>
+            </div>
+
+        <?php } ?>
     </div>
 
 </section>
