@@ -10,6 +10,7 @@ class DetailCommande
     private int $idCommande;
     private int $quantite;
     private float $prixTotal;
+    private string $nomProduit;
 
 
     public function getId(): int
@@ -70,6 +71,19 @@ class DetailCommande
     public function setPrixTotal(float $prixTotal): self
     {
         $this->prixTotal = $prixTotal;
+
+        return $this;
+    }
+
+
+    public function getNomProduit(): string
+    {
+        return $this->nomProduit;
+    }
+
+    public function setNomProduit(string $nomProduit): self
+    {
+        $this->nomProduit = $nomProduit;
 
         return $this;
     }

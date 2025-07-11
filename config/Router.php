@@ -37,6 +37,12 @@ class Router
                     $controller = new ProduitsController;
                     $controller->addProduct();
                     break;
+
+                case 'panier':
+                    $controller = new CommandesController;
+                    $controller->panier();
+                    break;
+
                 case 'connexion':
                     $controller = new UtilisateursController;
                     $controller->log();

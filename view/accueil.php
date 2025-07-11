@@ -17,8 +17,10 @@
                 <span class="products__price"><?= $produit->getPrix(); ?> €</span>
 
                 <?php if (isset($_SESSION['email'])): ?>
-                    <form action="" method="POST" class="products__add-form">
-                        <input type="hidden" name="id_produit" value="<?= $produit->getId(); ?>">
+                    <form action="index.php?page=panier" method="POST" class="products__add-form">
+                        <input type="hidden" name="id_produit" value="<?= $produit->getId() ?>">
+                        <input type="hidden" name="prix_unitaire" value="<?= $produit->getPrix() ?>">
+                        <input type="hidden" name="produit_nom" value="<?= $produit->getNom() ?>">
                         <label class="products__quantity-label">Quantité :
                             <select name="quantite" class="products__quantity-select">
                                 <?php for ($i = 1; $i <= 10; $i++): ?>
@@ -29,6 +31,7 @@
                         <input type="submit" class="products__add-btn" value="Ajouter au panier">
                     </form>
                 <?php endif; ?>
+
             </div>
         <?php endforeach; ?>
     </div>
