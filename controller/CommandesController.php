@@ -53,7 +53,7 @@ class CommandesController
             $commande->setStatut('En cours de traitement');
             $commande->setDateCommande($now);
 
-            CommmandesRepository::insert($commande);
+            CommandesRepository::insert($commande);
 
             $pdo = Database::connect();
             $idCommande = $pdo->lastInsertId();
@@ -67,8 +67,9 @@ class CommandesController
 
                 DetailCommmandeRepository::insert($commandeParProduit);
             }
-
-            require './view/user/profil.php';
+            $_SESSION['panier'] = [];
+            header('Location: index.php?page=profil');
+            exit;
         }
     }
 }
