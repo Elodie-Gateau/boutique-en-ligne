@@ -18,7 +18,7 @@
 
                 <?php if (isset($_SESSION['email'])): ?>
                     <form action="" method="POST" class="products__add-form">
-                        <input type="hidden" name="id_produit" value="<?= e($produit['id']) ?>">
+                        <input type="hidden" name="id_produit" value="<?= $produit->getId(); ?>">
                         <label class="products__quantity-label">Quantité :
                             <select name="quantite" class="products__quantity-select">
                                 <?php for ($i = 1; $i <= 10; $i++): ?>
