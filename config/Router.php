@@ -85,6 +85,15 @@ class Router
                     $controller->validCommand();
                     break;
 
+                case 'detailsCommande':
+                    if (!isset($_SESSION['email'])) {
+                        header('Location: index.php?page=connexion');
+                        exit;
+                    }
+                    $controller = new CommandesController;
+                    $controller->findDetailsCommand();
+                    break;
+
                 // PAGE DE CONNEXION
                 case 'connexion':
                     if (isset($_SESSION['email'])) {
@@ -113,6 +122,16 @@ class Router
                     }
                     $controller = new UtilisateursController;
                     $controller->modifierProfil();
+                    break;
+
+                // PAGE MODIFIER UTILISATEUR
+                case 'modifierUtilisateur':
+                    if (!isset($_SESSION['email']) || !isset($_SESSION['admin']) || !$_SESSION['admin']) {
+                        header('Location: index.php?page=accueil');
+                        exit;
+                    }
+                    $controller = new AdminController;
+                    $controller->modifierUtilisateur();
                     break;
 
 

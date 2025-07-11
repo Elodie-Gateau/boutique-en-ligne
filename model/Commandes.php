@@ -5,21 +5,21 @@ declare(strict_types=1);
 class Commande
 {
 
-    private int $id;
-    private int $idUser;
-    private float $total;
-    private string $statut;
-    private $dateCommande;
+    protected int $idCommand;
+    protected int $idUser;
+    protected float $total;
+    protected string $statut;
+    protected $dateCommande;
 
     public function getId(): int
     {
-        return $this->id;
+        return $this->idCommand;
     }
 
 
     public function setId(int $id): self
     {
-        $this->id = $id;
+        $this->idCommand = $id;
 
         return $this;
     }

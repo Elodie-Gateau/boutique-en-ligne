@@ -53,14 +53,36 @@ class CommandesController
             $commande->setStatut('En cours de traitement');
             $commande->setDateCommande($now);
 
+            CommandesRepository::insert($commande);
+
+            $pdo = Database::connect();
+            $idCommande = $pdo->lastInsertId();
+
             foreach ($panier as $article) {
                 $commandeParProduit = new DetailCommande;
                 $commandeParProduit->setIdProduit($article['id_produit']);
+                $commandeParProduit->setIdCommande($idCommande);
                 $commandeParProduit->setQuantite($article['quantite']);
                 $commandeParProduit->setPrixTotal($article['prix_total']);
-            }
 
-            require './view/panier.php';
+                DetailCommmandeRepository::insert($commandeParProduit);
+            }
+            $_SESSION['panier'] = [];
+            header('Location: index.php?page=profil');
+            exit;
+        }
+    }
+
+
+    public function findDetailsCommand()
+    {
+        if (isset($_POST['idCommand'])) {
+            $idCommand = e($_POST['idCommand']);
+            $commande = CommandesRepository::findByIdCommand($idCommand);
+            $detailsCommand = DetailCommmandeRepository::findByIdCommand($idCommand);
+            require './view/detailCommande.php';
+        } else {
+            echo "Aucune commande trouvée.";
         }
     }
 }
