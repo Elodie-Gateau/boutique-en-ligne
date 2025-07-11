@@ -64,4 +64,12 @@ class ProduitsRepository
             'id' => $produit->getId()
         ]);
     }
+
+    public static function deleteById(int $id)
+    {
+        $pdo = Database::connect();
+        $sql = "DELETE FROM produits WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['id' => $id]);
+    }
 }

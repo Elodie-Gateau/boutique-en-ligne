@@ -19,12 +19,12 @@
         <tbody>
             <?php foreach ($produits as $produit): ?>
                 <tr>
-                    <td class="admin-dashboard__td"><?= e($produit['nom']) ?></td>
-                    <td class="admin-dashboard__td"><?= e($produit['description']) ?></td>
-                    <td class="admin-dashboard__td"><?= e($produit['prix_unitaire']) ?> €</td>
+                    <td class="admin-dashboard__td"><?= e($produit->getNom()) ?></td>
+                    <td class="admin-dashboard__td"><?= e($produit->getDescription()) ?></td>
+                    <td class="admin-dashboard__td"><?= e(number_format($produit->getPrix(), 2, ',', ' ')) ?> €</td>
                     <td class="admin-dashboard__td">
-                        <a class="admin-dashboard__action" href="modifierProduit.php?id=<?= $produit['id'] ?>">Modifier</a> |
-                        <a class="admin-dashboard__action" href="supprimerProduit.php?id=<?= $produit['id'] ?>" onclick="return confirm('Supprimer ce produit ?')">Supprimer</a>
+                        <a class="admin-dashboard__action" href="modifierProduit.php?id=<?= $produit->getId() ?>">Modifier</a> |
+                        <a class="admin-dashboard__action" href="index.php?page=supprimerProduit&id=<?= $produit->getId() ?>" onclick="return confirm('Supprimer ce produit ?')">Supprimer</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -39,6 +39,7 @@
                 <th class="admin-dashboard__th">Prénom</th>
                 <th class="admin-dashboard__th">Email</th>
                 <th class="admin-dashboard__th">Admin</th>
+                <th class="admin-dashboard__th">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -48,6 +49,10 @@
                     <td class="admin-dashboard__td"><?= e($user['prenom']) ?></td>
                     <td class="admin-dashboard__td"><?= e($user['email']) ?></td>
                     <td class="admin-dashboard__td"><?= $user['admin'] ? 'Oui' : 'Non' ?></td>
+                    <td class="admin-dashboard__td">
+                        <a class="admin-dashboard__action" href="index.php?page=modifierUtilisateur&id=<?= e($user['id']) ?>">Modifier</a> |
+                        <a class="admin-dashboard__action" href="index.php?page=supprimerUtilisateur&id=<?= e($user['id']) ?>" onclick="return confirm('Supprimer cet utilisateur ?')">Supprimer</a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

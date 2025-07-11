@@ -25,8 +25,14 @@ class ProduitsController
         require './view/admin/administrateurProduit.php';
     }
 
-    // public static function listProducts()
-    // {
-    //     return ProduitsRepository::findAll();
-    // }
+    public function supprimerProduit()
+    {
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $id = (int)$_GET['id'];
+            ProduitsRepository::deleteById($id);
+        }
+
+        header('Location: index.php?page=adminDashboard');
+        exit;
+    }
 }

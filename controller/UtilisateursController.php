@@ -7,10 +7,7 @@ class UtilisateursController
     public function register()
     {
 
-        if (isset($_SESSION['email'])) {
-            header('Location: index.php?page=accueil');
-            exit;
-        }
+
 
         $message = '';
         $errors = [];
@@ -44,10 +41,6 @@ class UtilisateursController
     public function log()
     {
 
-        if (isset($_SESSION['email'])) {
-            header('Location: index.php?page=accueil');
-            exit;
-        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = new Utilisateur;
@@ -62,5 +55,34 @@ class UtilisateursController
         } else {
             require './view/user/connexion.php';
         }
+    }
+
+    public function profil()
+    {
+
+        require './view/user/profil.php';
+    }
+
+    public function modifierProfil()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = new Utilisateur();
+            $user->setId($_SESSION['id_user']);
+            $user->setNom($_POST['nom']);
+            $user->setPrenom($_POST['prenom']);
+            $user->setEmail($_POST['email']);
+
+            $_SESSION['nom'] = $_POST['nom'];
+            $_SESSION['prenom'] = $_POST['prenom'];
+            $_SESSION['email'] = $_POST['email'];
+
+            UtilisateursRepository::update($user);
+
+            header('Location: index.php?page=profil');
+            exit;
+        }
+
+        require './view/user/modifierProfil.php';
     }
 }
