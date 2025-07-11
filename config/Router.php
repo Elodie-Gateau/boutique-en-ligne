@@ -69,7 +69,10 @@ class Router
                     $controller->panier();
                     break;
 
-                /////////////////  PAGE DE CONNEXION /////////////////
+                case 'commande':
+                    $controller = new CommandesController;
+                    $controller->validCommand();
+
                 case 'connexion':
 
                     if (isset($_SESSION['email'])) {

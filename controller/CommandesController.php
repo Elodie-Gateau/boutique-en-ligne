@@ -31,9 +31,14 @@ class CommandesController
             $panier[] = $item;
 
             $_SESSION['panier'] = $panier;
-            echo "<pre>";
-            var_dump($_SESSION['panier']);
         }
         require './view/panier.php';
+    }
+
+
+    public function validCommand()
+    {
+        $panier = $_SESSION['panier'];
+        $id_utilisateur = $_SESSION['id_utilisateur'];
     }
 }
