@@ -8,6 +8,7 @@
                 <li><a class="main-header__link" href="index.php?page=adminDashboard">Admin</a></li>
             <?php endif; ?>
             <?php if (isset($_SESSION['email'])): ?>
+                <li><a class="main-header__link" href="index.php?page=profil">Profil</a></li>
                 <li><a class="main-header__link" href="index.php?page=logout">Déconnexion</a></li>
             <?php else: ?>
                 <li><a class="main-header__link" href="index.php?page=connexion">Connexion</a></li>

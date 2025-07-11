@@ -44,9 +44,9 @@
         <tbody>
             <?php foreach ($utilisateurs as $user): ?>
                 <tr>
-                    <td class="admin-dashboard__td"><?= htmlspecialchars($user['nom']) ?></td>
-                    <td class="admin-dashboard__td"><?= htmlspecialchars($user['prenom']) ?></td>
-                    <td class="admin-dashboard__td"><?= htmlspecialchars($user['email']) ?></td>
+                    <td class="admin-dashboard__td"><?= e($user['nom']) ?></td>
+                    <td class="admin-dashboard__td"><?= e($user['prenom']) ?></td>
+                    <td class="admin-dashboard__td"><?= e($user['email']) ?></td>
                     <td class="admin-dashboard__td"><?= $user['admin'] ? 'Oui' : 'Non' ?></td>
                 </tr>
             <?php endforeach; ?>
