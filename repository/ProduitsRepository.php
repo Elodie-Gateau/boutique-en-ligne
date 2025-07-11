@@ -55,6 +55,41 @@ class ProduitsRepository
         return $products;
     }
 
+    public static function update(Produit $product)
+    {
+        $pdo = Database::connect();
+        $sql = "UPDATE produits SET nom = :nom, prix_unitaire = :prix_unitaire, description = :description, type = :type, url_img = :url_img WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'nom' => $product->getNom(),
+            'prix_unitaire' => $product->getPrix(),
+            'description' => $product->getDescription(),
+            'type' => $product->getType(),
+            'url_img' => $product->getUrl_img(),
+            'id' => $product->getId(),
+        ]);
+    }
+
+    public static function findById($id)
+    {
+        $pdo = Database::connect();
+        $stmt = $pdo->prepare("SELECT * FROM produits WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($data) {
+            $product = new Produit();
+            $product->setId($data['id']);
+            $product->setNom($data['nom']);
+            $product->setPrix($data['prix_unitaire']);
+            $product->setDescription($data['description']);
+            $product->setType($data['type']);
+            $product->setUrl_img($data['url_img']);
+        }
+
+        return $product;
+    }
+
     public static function delete(Produit $produit)
     {
         $pdo = Database::connect();

@@ -134,6 +134,16 @@ class Router
                     $controller->modifierUtilisateur();
                     break;
 
+                // PAGE MODIFIER UN PRODUIT
+                case 'modifierProduit':
+                    if (!isset($_SESSION['email']) || !isset($_SESSION['admin']) || !$_SESSION['admin']) {
+                        header('Location: index.php?page=accueil');
+                        exit;
+                    }
+                    $controller = new AdminController;
+                    $controller->modifierProduit();
+                    break;
+
 
                 // PAGE DE DECONNEXION
                 case 'logout':
