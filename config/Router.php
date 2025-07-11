@@ -115,6 +115,16 @@ class Router
                     $controller->modifierProfil();
                     break;
 
+                // PAGE MODIFIER UTILISATEUR
+                case 'modifierUtilisateur':
+                    if (!isset($_SESSION['email']) || !isset($_SESSION['admin']) || !$_SESSION['admin']) {
+                        header('Location: index.php?page=accueil');
+                        exit;
+                    }
+                    $controller = new AdminController;
+                    $controller->modifierUtilisateur();
+                    break;
+
 
                 // PAGE DE DECONNEXION
                 case 'logout':
