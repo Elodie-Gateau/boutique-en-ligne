@@ -59,7 +59,7 @@ class UtilisateursController
 
     public function profil()
     {
-
+        $commandes = CommmandesRepository::findByIdUser($_SESSION['id_user']);
         require './view/user/profil.php';
     }
 
