@@ -56,9 +56,9 @@ class AdminController
             header('Location: index.php?page=adminDashboard');
             exit;
         }
-        $user = null;
+        $product = null;
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-            $user = ProduitsRepository::findById((int)$_GET['id']);
+            $product = ProduitsRepository::findById((int)$_GET['id']);
         }
 
         require './view/admin/modifierProduit.php';

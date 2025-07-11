@@ -6,16 +6,17 @@
 
         <form action="index.php?page=modifierProduit" method="POST" class="admin-products__form">
             <div class="admin-products__field">
+                <input type="hidden" name="id" value="<?= e($product->getId()) ?>">
                 <label for="nom" class="admin-products__label">Nom du produit</label>
-                <input type="text" name="nom" id="nom" class="admin-products__input">
+                <input type="text" name="nom" id="nom" class="admin-products__input" value="<?= e($product->getNom()) ?>">
             </div>
-            <div class="admin-products__field">
+            <div class=" admin-products__field">
                 <label for="prix_unitaire" class="admin-products__label">Prix unitaire du produit</label>
-                <input type="number" name="prix_unitaire" id="prix_unitaire" class="admin-products__input" step="any">
+                <input type="number" name="prix_unitaire" id="prix_unitaire" class="admin-products__input" step="any" value="<?= e($product->getPrix()) ?>">
             </div>
             <div class="admin-products__field">
                 <label for="description" class="admin-products__label">Description</label>
-                <textarea name="description" id="description" class="admin-products__textarea"></textarea>
+                <textarea name="description" id="description" class="admin-products__textarea" value="<?= e($product->getDescription()) ?>"></textarea>
             </div>
             <div class="admin-products__field">
                 <label for="type" class="admin-products__label">Type de produit</label>
@@ -26,9 +27,9 @@
             </div>
             <div class="admin-products__field">
                 <label for="url_img" class="admin-products__label">Lien de l'image</label>
-                <input type="text" name="url_img" id="url_img" class="admin-products__input">
+                <input type="text" name="url_img" id="url_img" class="admin-products__input" value="<?= e($product->getUrl_img()) ?>">
             </div>
-            <input type="submit" class="admin-products__submit" value="Ajouter le produit">
+            <input type="submit" class="admin-products__submit" value="Modifier le produit">
         </form>
     </section>
     <section class="admin-products__list"></section>
