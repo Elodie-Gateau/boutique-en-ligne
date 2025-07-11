@@ -24,51 +24,47 @@ class DetailCommmandeRepository
         ]);
     }
 
-    public static function findAll()
+
+    public static function findByIdCommand($idCommand)
     {
 
         $pdo = Database::connect();
-        $sql = "SELECT * FROM commandes;";
-        $stmt = $pdo->query($sql);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $commandes = [];
-
-        foreach ($rows as $row) {
-            $commande = new Commande;
-            $commande->setId($row['id']);
-            $commande->setIdUser($row['id_user']);
-            $commande->setTotal($row['total']);
-            $commande->setStatut($row['statut']);
-            $commande->setDateCommande($row['date_commande']);
-            $commandes[] = $commande;
-        }
-
-        return $commandes;
-    }
-    public static function findByIdUser($IdUser)
-    {
-
-        $pdo = Database::connect();
-        $sql = "SELECT * FROM commandes WHERE id_user = :id_user;";
+        $sql = "SELECT 
+                cp.id_produit,
+                cp.quantite,
+                cp.prix_total,
+                p.nom,
+                p.prix_unitaire,
+                p.description,
+                c.statut,
+                c.date_commande,
+                c.total
+                FROM commandes_par_produits cp 
+                JOIN commandes c ON cp.id_commande = c.id
+                JOIN produits p ON cp.id_produit = p.id
+                WHERE cp.id_commande = :id_commande;";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            'id_user' => $IdUser
+            'id_commande' => $idCommand
         ]);
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $commandes = [];
+        $detailsCommand = [];
 
         foreach ($rows as $row) {
-            $commande = new Commande;
-            $commande->setId($row['id']);
-            $commande->setIdUser($row['id_user']);
-            $commande->setTotal($row['total']);
-            $commande->setStatut($row['statut']);
-            $commande->setDateCommande($row['date_commande']);
-            $commandes[] = $commande;
+            $articles = new DetailCommande;
+            $articles->setIdProduit($row['id_produit']);
+            $articles->setQuantite($row['quantite']);
+            $articles->setPrixTotal($row['prix_total']);
+            $articles->setNomProduit($row['nom']);
+            $articles->setPrixUnitaireProduit($row['prix_unitaire']);
+            $articles->setDescriptionProduit($row['description']);
+            $articles->setStatut($row['statut']);
+            $articles->setDateCommande($row['date_commande']);
+            $articles->setTotal($row['total']);
+            $detailsCommand[] = $articles;
         }
 
-        return $commandes;
+        return $detailsCommand;
     }
 }
