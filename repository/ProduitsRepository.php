@@ -14,7 +14,7 @@ class ProduitsRepository
         description,
         type,
         url_img,
-        statut,
+        statut
         ) VALUES (
         :nom,
         :prix_unitaire,
