@@ -20,6 +20,7 @@ require_once('./utils/utils.php');
 require_once('./controller/AdminController.php');
 require_once('./controller/HomePageController.php');
 require_once('./utils/utils.php');
+
 ?>
 
 <!DOCTYPE html>

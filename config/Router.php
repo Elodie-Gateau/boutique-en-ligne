@@ -43,6 +43,11 @@ class Router
                     $controller->supprimerUtilisateur();
                     break;
 
+                // PAGE RECHERCHE UN PRODUIT
+                case 'search':
+                    $controller = new HomePageController;
+                    $controller->searchProduct();
+                    break;
 
                 // PAGE SUPPRIMER UN PRODUIT
                 case 'supprimerProduit':
