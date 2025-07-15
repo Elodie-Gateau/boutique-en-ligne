@@ -56,6 +56,7 @@ class AdminController
             $url_img = $product->getUrl_img();
 
             if (isset($_FILES['url_img'])) {
+
                 $tmpName = $_FILES['url_img']['tmp_name'];
                 $fileName = basename($_FILES['url_img']['name']);
                 $destination = 'public/images/products/' . $fileName;
