@@ -90,6 +90,32 @@ class ProduitsRepository
         return $product;
     }
 
+
+    public static function findByName($name)
+    {
+        $pdo = Database::connect();
+        $stmt = $pdo->prepare("SELECT * FROM produits WHERE nom = :name");
+        $stmt->execute(['name' => $name]);
+        $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($datas) {
+            $products = [];
+            foreach ($datas as $data) {
+                $product = new Produit();
+                $product->setId($data['id']);
+                $product->setNom($data['nom']);
+                $product->setPrix($data['prix_unitaire']);
+                $product->setDescription($data['description']);
+                $product->setType($data['type']);
+                $product->setUrl_img($data['url_img']);
+                $products[] = $product;
+            }
+
+            return $products;
+        }
+    }
+
+
     public static function delete(Produit $produit)
     {
         $pdo = Database::connect();
@@ -106,5 +132,13 @@ class ProduitsRepository
         $sql = "DELETE FROM produits WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(['id' => $id]);
+    }
+
+    public static function search($keyword)
+    {
+        $db = Database::connect();
+        $stmt = $db->prepare("SELECT * FROM produits WHERE nom LIKE :keyword OR description LIKE :keyword");
+        $stmt->execute(['keyword' => '%' . $keyword . '%']);
+        return $stmt->fetchAll();
     }
 }
