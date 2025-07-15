@@ -11,6 +11,7 @@ class Utilisateur
     private string $email;
     private string $password;
     private bool $admin = false;
+    private string $statut;
 
     public function getId(): int
     {
@@ -80,6 +81,19 @@ class Utilisateur
     public function setAdmin(bool $admin): self
     {
         $this->admin = $admin;
+
+        return $this;
+    }
+
+
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
 
         return $this;
     }

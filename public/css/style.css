@@ -5,7 +5,7 @@
 }
 
 body {
-    background: #f4f7fa;
+    background: #f4f9f7;
     color: #222;
     font-family: 'Roboto', Arial, sans-serif;
 }
@@ -14,22 +14,22 @@ h1,
 h2,
 h3 {
     font-weight: 700;
-    color: #1e375a;
+    color: #029660;
 }
 
 a {
-    color: #1e70c1;
+    color: #03c783;
     text-decoration: none;
 }
 
 a:hover {
-    color: #15508e;
+    color: #02694e;
 }
 
 /* ----- HEADER ----- */
 .main-header {
     width: 100%;
-    background: #1e70c1;
+    background: #03c783;
 }
 
 .main-header__nav {
@@ -42,14 +42,10 @@ a:hover {
     height: 58px;
 }
 
-.main-header__logo {
-    color: #fff;
-    font-size: 1.3em;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 0 10px;
+.main-header__logo img {
+    max-height: 200px;
+    width: auto;
+    display: block;
 }
 
 .main-header__menu {
@@ -64,15 +60,14 @@ a:hover {
     color: #fff;
     padding: 8px 15px;
     border-radius: 7px;
-    font-weight: 500;
-    text-transform: uppercase;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .main-header__link:hover,
 .main-header__link:focus {
-    background: #15508e;
-    color: #e1ecfa;
+    background: #029660;
+    color: #eafff7;
     text-decoration: none;
 }
 
@@ -96,26 +91,25 @@ a:hover {
 
 .products__input {
     padding: 8px;
-    border: 1px solid #b3c3d3;
+    border: 1px solid #aaf3d6;
     border-radius: 8px;
     font-size: 1rem;
     min-width: 200px;
 }
 
 .products__submit {
-    background: #1e70c1;
+    background: #03c783;
     color: #fff;
     border: none;
     border-radius: 8px;
     padding: 8px 18px;
     cursor: pointer;
     font-weight: bold;
-
 }
 
 .products__submit--reset {
-    background: #e0e3e7;
-    color: #1e70c1;
+    background: #e2f9f1;
+    color: #03c783;
     border: none;
     border-radius: 8px;
     padding: 8px 18px;
@@ -127,14 +121,13 @@ a:hover {
 }
 
 .products__submit--reset:hover {
-    background: #d2d7dd;
+    background: #c6f4e3;
     color: #fff;
     text-decoration: none;
 }
 
-
 .products__submit:hover {
-    background: #1355a6;
+    background: #029660;
 }
 
 .products__list {
@@ -159,7 +152,7 @@ a:hover {
     object-fit: contain;
     margin-bottom: 14px;
     border-radius: 8px;
-    background: #f8fafd;
+    background: #f0fffa;
 }
 
 .products__name {
@@ -168,7 +161,7 @@ a:hover {
 
 .products__price {
     margin: 8px 0 10px 0;
-    color: #1e70c1;
+    color: #03c783;
     font-weight: bold;
 }
 
@@ -186,14 +179,14 @@ a:hover {
     padding: 7px 16px;
     border: none;
     border-radius: 8px;
-    background: #1e70c1;
+    background: #03c783;
     color: #fff;
     font-weight: 600;
     cursor: pointer;
 }
 
 .products__add-btn:hover {
-    background: #1355a6;
+    background: #029660;
 }
 
 /* ----- ADMIN AJOUT ----- */
@@ -207,7 +200,7 @@ a:hover {
 }
 
 .admin-products__title {
-    color: #1e375a;
+    color: #029660;
     margin-bottom: 17px;
     text-align: center;
 }
@@ -229,7 +222,7 @@ a:hover {
 }
 
 .admin-products__label {
-    color: #2c497a;
+    color: #03a86d;
     font-weight: 500;
 }
 
@@ -238,14 +231,14 @@ a:hover {
 .admin-products__textarea {
     padding: 8px;
     border-radius: 7px;
-    border: 1px solid #b3c3d3;
+    border: 1px solid #aaf3d6;
     font-size: 1rem;
     width: 100%;
 }
 
 .admin-products__submit {
     margin-top: 9px;
-    background: #1e70c1;
+    background: #03c783;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -255,13 +248,12 @@ a:hover {
 }
 
 .admin-products__submit:hover {
-    background: #1355a6;
+    background: #029660;
 }
 
 /* ----- HERO ----- */
-
 .hero {
-    background: linear-gradient(105deg, #f4faff 60%, #e3f1ff 100%);
+    background: linear-gradient(105deg, #f4f9f7 60%, #aaf3d6 100%);
     padding: 48px 0 40px 0;
     border-radius: 0 0 18px 18px;
     box-shadow: 0 4px 32px #0001;
@@ -278,13 +270,13 @@ a:hover {
 .hero__title {
     font-size: 2.2em;
     font-weight: 800;
-    color: #1e375a;
+    color: #029660;
     margin-bottom: 16px;
     letter-spacing: 1px;
 }
 
 .hero__description {
-    color: #31507d;
+    color: #029660;
     font-size: 1.17em;
     line-height: 1.7;
     font-weight: 400;
@@ -309,7 +301,7 @@ a:hover {
 .connexion__title,
 .register__title {
     margin-bottom: 20px;
-    color: #1e375a;
+    color: #029660;
     text-align: center;
 }
 
@@ -323,7 +315,7 @@ a:hover {
 .connexion__label,
 .register__label {
     font-weight: 500;
-    color: #2c497a;
+    color: #03a86d;
 }
 
 .connexion__input,
@@ -333,14 +325,14 @@ a:hover {
 .admin-products__textarea {
     padding: 9px;
     border-radius: 8px;
-    border: 1px solid #b3c3d3;
+    border: 1px solid #aaf3d6;
     font-size: 1rem;
     width: 100%;
 }
 
 .connexion__submit,
 .register__submit {
-    background: #1e70c1;
+    background: #03c783;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -352,7 +344,7 @@ a:hover {
 
 .connexion__submit:hover,
 .register__submit:hover {
-    background: #1355a6;
+    background: #029660;
 }
 
 .connexion__note,
@@ -370,19 +362,31 @@ a:hover {
 }
 
 .register__success {
-    color: #187b29;
-    background: #ddffe4;
-    border: 1px solid #b5e3c3;
+    color: #037a53;
+    background: #e0fff2;
+    border: 1px solid #aaf3d6;
     padding: 7px 14px;
     border-radius: 6px;
     text-align: center;
     margin-bottom: 15px;
+
 }
+
+.connexion__error {
+    background: #ffeaea;
+    color: #c14c1e;
+    border: 1px solid #f3aaaa;
+    padding: 7px 14px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
 
 /* ----- FOOTER ----- */
 .main-footer {
     width: 100%;
-    background: #1e375a;
+    background: #029660;
     padding: 18px 0 14px 0;
     text-align: center;
     color: #fff;
@@ -397,7 +401,7 @@ a:hover {
 
 .main-footer__by {
     display: block;
-    color: #b7d5fa;
+    color: #b7f6e0;
     font-size: 0.94em;
     margin-top: 3px;
 }
@@ -414,7 +418,7 @@ a:hover {
 
 .admin-dashboard__title {
     margin-bottom: 18px;
-    color: #20457a;
+    color: #029660;
 }
 
 .admin-dashboard__menu {
@@ -424,7 +428,7 @@ a:hover {
 }
 
 .admin-dashboard__link {
-    background: #1e70c1;
+    background: #03c783;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -435,18 +439,18 @@ a:hover {
 }
 
 .admin-dashboard__link:hover {
-    background: #1355a6;
+    background: #029660;
     color: #fff;
 }
 
 .admin-dashboard__subtitle {
     margin-top: 35px;
     margin-bottom: 12px;
-    color: #23478a;
+    color: #029660;
 }
 
 .admin-dashboard__action {
-    color: #1e70c1;
+    color: #03c783;
     font-weight: bold;
     margin: 0 7px;
     transition: color 0.17s;
@@ -461,10 +465,7 @@ a:hover {
     color: #c11e35;
 }
 
-
-/* =========================
-   UNIFORMISATION DES TABLEAUX
-   ========================= */
+/* UNIFORMISATION DES TABLEAUX */
 
 .admin-dashboard__table,
 .profil-dashboard__table,
@@ -474,7 +475,7 @@ a:hover {
     border-collapse: collapse;
     margin-top: 6px;
     margin-bottom: 25px;
-    background: #f8fafc;
+    background: #f0fffa;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 3px 14px #0001;
@@ -484,8 +485,8 @@ a:hover {
 .profil-dashboard__th,
 .historique-commande__th,
 .commande-detail__th {
-    background: #e3eef8;
-    color: #2c497a;
+    background: #aaf3d6;
+    color: #029660;
     font-size: 1em;
     padding: 11px 10px;
     text-align: left;
@@ -495,7 +496,7 @@ a:hover {
 .profil-dashboard__td,
 .historique-commande__td,
 .commande-detail__td {
-    border-bottom: 1px solid #e0e7ef;
+    border-bottom: 1px solid #c6f4e3;
     font-size: 0.97em;
     padding: 11px 10px;
     text-align: left;
@@ -506,27 +507,25 @@ a:hover {
 .historique-commande__td--total,
 .commande-detail__td--total {
     font-weight: bold;
-    color: #20457a;
-
+    color: #029660;
 }
 
 .profil-dashboard__action,
 .historique-commande__action,
 .commande-detail__action {
-    background: #1e70c1;
+    background: #03c783;
     color: #fff;
     border: none;
     border-radius: 8px;
     padding: 6px 15px;
     font-weight: 600;
     cursor: pointer;
-
 }
 
 .profil-dashboard__action:hover,
 .historique-commande__action:hover,
 .commande-detail__action:hover {
-    background: #1355a6;
+    background: #029660;
 }
 
 /* ----- PROFIL DASHBOARD ----- */
@@ -540,7 +539,7 @@ a:hover {
 }
 
 .profil-dashboard__title {
-    color: #1e375a;
+    color: #029660;
     margin-bottom: 28px;
     font-size: 2em;
     text-align: center;
@@ -558,13 +557,13 @@ a:hover {
     min-width: 250px;
     max-width: 350px;
     padding-right: 28px;
-    border-right: 1px solid #e4eaf3;
+    border-right: 1px solid #aaf3d6;
     margin-bottom: 20px;
 }
 
 .profil-dashboard__subtitle {
     margin-bottom: 16px;
-    color: #23478a;
+    color: #029660;
     font-size: 1.18em;
     font-weight: 600;
 }
@@ -580,11 +579,11 @@ a:hover {
 
 .profil-dashboard__info {
     font-weight: 500;
-    color: #2c497a;
+    color: #03a86d;
 }
 
 .profil-dashboard__btn {
-    background: #1e70c1;
+    background: #03c783;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -595,14 +594,13 @@ a:hover {
 }
 
 .profil-dashboard__btn:hover {
-    background: #1355a6;
+    background: #029660;
 }
 
 .profil-dashboard__orders {
     flex: 2 1 400px;
     min-width: 320px;
 }
-
 
 /* ----- DETAIL COMMANDE ----- */
 .commande-detail {
@@ -615,7 +613,7 @@ a:hover {
 }
 
 .commande-detail__title {
-    color: #1e375a;
+    color: #029660;
     margin-bottom: 20px;
     font-size: 2em;
     text-align: center;
@@ -630,13 +628,12 @@ a:hover {
 }
 
 .commande-detail__info {
-    color: #2c497a;
+    color: #03a86d;
     font-weight: 500;
     font-size: 1.08em;
 }
 
 /* ----- PANIER DASHBOARD ----- */
-
 .panier-dashboard {
     max-width: 850px;
     margin: 40px auto 0 auto;
@@ -647,7 +644,7 @@ a:hover {
 }
 
 .panier-dashboard__title {
-    color: #1e375a;
+    color: #029660;
     margin-bottom: 20px;
     font-size: 2em;
     text-align: center;
@@ -666,7 +663,7 @@ a:hover {
     border-collapse: collapse;
     margin-top: 6px;
     margin-bottom: 24px;
-    background: #f8fafc;
+    background: #f0fffa;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 3px 14px #0001;
@@ -679,20 +676,19 @@ a:hover {
 }
 
 .panier-dashboard__th {
-    background: #e3eef8;
-    color: #2c497a;
+    background: #aaf3d6;
+    color: #029660;
     font-size: 1em;
 }
 
 .panier-dashboard__td {
-    border-bottom: 1px solid #e0e7ef;
+    border-bottom: 1px solid #c6f4e3;
     font-size: 0.97em;
 }
 
 .panier-dashboard__td--total {
     font-weight: bold;
-    color: #20457a;
-
+    color: #029660;
 }
 
 .panier-dashboard__qty {
@@ -701,7 +697,7 @@ a:hover {
     text-align: center;
     font-weight: 600;
     margin: 0 5px;
-    color: #1e375a;
+    color: #029660;
 }
 
 .panier-dashboard__actions {
@@ -717,7 +713,7 @@ a:hover {
     border: none;
     border-radius: 8px;
     padding: 5px 10px;
-    color: #1e70c1;
+    color: #03c783;
     font-weight: 600;
     font-size: 1em;
     cursor: pointer;
@@ -726,16 +722,16 @@ a:hover {
 }
 
 .panier-dashboard__btn--qty:hover {
-    background: #e3eef8;
+    background: #aaf3d6;
 }
 
 .panier-dashboard__btn--del:hover {
     color: #c11e35;
-    background: #fbe9e9;
+    background: #ffeaea;
 }
 
 .panier-dashboard__btn--vider {
-    background: #1e70c1;
+    background: #03c783;
     color: #fff;
     font-weight: 700;
     padding: 8px 18px;
@@ -753,7 +749,7 @@ a:hover {
 }
 
 .panier-dashboard__link {
-    background: #1e70c1;
+    background: #03c783;
     color: #fff;
     border-radius: 8px;
     padding: 10px 22px;
@@ -764,7 +760,7 @@ a:hover {
 }
 
 .panier-dashboard__link:hover {
-    background: #1355a6;
+    background: #029660;
     color: #fff;
 }
 

@@ -12,14 +12,14 @@ class UtilisateursRepository
             nom,
             prenom,
             email,
-            password
-            -- admin     
+            password,
+            statut     
         ) VALUES (
             :nom,
             :prenom,
             :email,
-            :password
-            -- :admin
+            :password,
+            :statut
         );";
 
         $stmt = $pdo->prepare($sql);
@@ -29,7 +29,7 @@ class UtilisateursRepository
             'prenom' => $user->getPrenom(),
             'email' => $user->getEmail(),
             'password' => $user->getPassword(),
-            // 'admin' => $user->getAdmin()
+            'statut' => $user->getStatut()
         ]);
     }
 
@@ -47,29 +47,31 @@ class UtilisateursRepository
 
         $userBDD = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($userBDD && password_Verify($user->getPassword(), $userBDD['password'])) {
+        if ($userBDD && password_Verify($user->getPassword(), $userBDD['password']) && $userBDD['statut'] === "actif") {
             $userConnected = new Utilisateur;
             $userConnected->setId($userBDD['id']);
             $userConnected->setNom($userBDD['nom']);
             $userConnected->setPrenom($userBDD['prenom']);
             $userConnected->setEmail($userBDD['email']);
             $userConnected->setPassword($userBDD['password']);
+            $userConnected->setStatut($userBDD['statut']);
 
             $_SESSION['id_user'] = $userConnected->getId();
             $_SESSION['nom'] = $userConnected->getNom();
             $_SESSION['prenom'] = $userConnected->getPrenom();
             $_SESSION['email'] = $userConnected->getEmail();
             $_SESSION['admin'] = $userBDD['admin'];
+            $_SESSION['statut'] = $userBDD['statut'];
+            return true;
         } else {
-            echo "Le nom d'utilisateur ou le mot de passe est incorrecte.";
-            exit;
+            return false;
         }
     }
 
     public static function findAllUsers()
     {
         $pdo = Database::connect();
-        $sql = "SELECT id, nom, prenom, email, admin FROM utilisateurs";
+        $sql = "SELECT id, nom, prenom, email, statut, admin FROM utilisateurs";
         $stmt = $pdo->query($sql);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
@@ -99,12 +101,15 @@ class UtilisateursRepository
         ]);
     }
 
-    public static function deleteById($id)
+    public static function deleteById($id, $statut)
     {
         $pdo = Database::connect();
-        $sql = "DELETE FROM utilisateurs WHERE id = :id";
+        $sql = "UPDATE utilisateurs SET statut = :statut WHERE id = :id";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['id' => $id]);
+        $stmt->execute([
+            'id' => $id,
+            'statut' => $statut
+        ]);
     }
 
     public static function findById($id)
@@ -122,6 +127,7 @@ class UtilisateursRepository
             $user->setEmail($data['email']);
             $user->setPassword($data['password']);
             $user->setAdmin((bool)$data['admin']);
+            $user->setStatut($data['statut']);
         }
 
         return $user;
