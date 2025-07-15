@@ -11,6 +11,39 @@ class CommandesController
             $_SESSION['panier'] = [];
         }
 
+        // Supprimer un article
+        else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'delete') {
+            $idProduit = $_POST['id_produit'];
+
+            $panier = $_SESSION['panier'];
+
+            foreach ($panier as $key => $item) {
+                if ($item['id_produit'] === $idProduit && $item['quantite'] > 1) {
+                    $panier[$key]['quantite']--;
+                    $panier[$key]['prix_total'] = $panier[$key]['quantite'] * $panier[$key]['prix_unitaire'];
+                } else if ($item['id_produit'] === $idProduit && $item['quantite'] === 1) {
+                    unset($panier[$key]);
+                }
+            }
+            $panier = array_values($panier);
+            $_SESSION['panier'] = $panier;
+        }
+        // Augmenter la quantite
+        else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'up') {
+            $idProduit = $_POST['id_produit'];
+
+            $panier = $_SESSION['panier'];
+
+            foreach ($panier as $key => $item) {
+                if ($item['id_produit'] === $idProduit) {
+                    $panier[$key]['quantite']++;
+                    $panier[$key]['prix_total'] = $panier[$key]['quantite'] * $panier[$key]['prix_unitaire'];
+                }
+            }
+
+            $_SESSION['panier'] = $panier;
+        }
+
         // Remplir le panier
         else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -27,9 +60,24 @@ class CommandesController
                 $panier = [];
             } else {
                 $panier = $_SESSION['panier'];
+
+                $dejaDansPanier = false;
+                foreach ($panier as $key => $article) {
+                    if ($article['id_produit'] === $item['id_produit']) {
+                        $panier[$key]['quantite'] += $item['quantite'];
+                        $panier[$key]['prix_total'] = $panier[$key]['quantite'] * $panier[$key]['prix_unitaire'];
+                        $dejaDansPanier = true;
+                        break;
+                    }
+                }
+                if (!$dejaDansPanier) {
+                    $panier[] = $item;
+                }
             }
 
-            $panier[] = $item;
+
+
+
 
             $_SESSION['panier'] = $panier;
         }
