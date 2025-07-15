@@ -1,10 +1,23 @@
+<section class="hero">
+    <div class="hero__content">
+        <h1 class="hero__title">Bienvenue sur notre boutique en ligne!</h1>
+        <p class="hero__description">
+            Découvrez un large choix de fruits et légumes frais, sélectionnés avec soin pour vous offrir le meilleur de la nature!<br>
+            Notre site vous permet de parcourir facilement notre catalogue, d'ajouter vos produits préférés à votre panier et de finaliser vos commandes en toute simplicité.<br><br>
+            Que vous soyez à la recherche de saveurs authentiques ou que vous souhaitiez faire le plein de vitamines, vous trouverez forcément votre bonheur parmi nos produits de qualité.<br><br>
+            Bonne visite et bon shopping !
+        </p>
+    </div>
+</section>
+
 <section class="products">
 
     <div class="products__search-bar">
         <form action="index.php?page=search" method="POST" class="products__form">
             <input type="text" name="search_query" class="products__input" placeholder="Rechercher un produit">
             <input type="submit" class="products__submit" value="Rechercher">
-            <a href="index.php?page=accueil">Réinitialiser</a>
+            <a href="index.php?page=accueil" class="products__submit products__submit--reset">Réinitialiser</a>
+
         </form>
 
     </div>
