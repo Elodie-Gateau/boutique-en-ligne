@@ -13,7 +13,14 @@ class AdminController
     {
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $id = (int)$_GET['id'];
-            UtilisateursRepository::deleteById($id);
+            $user = UtilisateursRepository::findById($id);
+            $userStatut = $user->getStatut();
+            if ($userStatut === "actif") {
+                $statut = "inactif";
+            } else if ($userStatut === "inactif") {
+                $statut = "actif";
+            }
+            UtilisateursRepository::deleteById($id, $statut);
         }
         header('Location: index.php?page=adminDashboard');
         exit;
@@ -45,11 +52,10 @@ class AdminController
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $produit = ProduitsRepository::findById((int)$_POST['id']);
-            $url_img = $produit->getUrl_img();
+            $product = ProduitsRepository::findById((int)$_POST['id']);
+            $url_img = $product->getUrl_img();
+
             if (isset($_FILES['url_img'])) {
-
-
                 $tmpName = $_FILES['url_img']['tmp_name'];
                 $fileName = basename($_FILES['url_img']['name']);
                 $destination = 'public/images/products/' . $fileName;
@@ -61,7 +67,7 @@ class AdminController
                 }
             }
 
-            $product = new Produit;
+
             $product->setId((int)$_POST['id']);
             $product->setNom($_POST['nom']);
             $product->setPrix($_POST['prix_unitaire']);
