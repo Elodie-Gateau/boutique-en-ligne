@@ -14,11 +14,12 @@ class HomePageController
 
     public function searchProduct()
     {
-        if (isset($_POST['search_query'])) {
+        if (!empty($_POST['search_query'])) {
             $search = "%" . $_POST['search_query'] . "%";
-
             $produits = ProduitsRepository::findByName($search);
-
+            if (!is_iterable($produits)) {
+                $produits = [];  // On s’assure que c’est toujours un tableau
+            }
             require './view/accueil.php';
         } else {
             header('Location: index.php?page=accueil');
