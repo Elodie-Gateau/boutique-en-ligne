@@ -4,7 +4,7 @@
 
 
 
-        <form action="index.php?page=modifierProduit" method="POST" class="admin-products__form">
+        <form action="index.php?page=modifierProduit" method="POST" class="admin-products__form" enctype="multipart/form-data">
             <div class="admin-products__field">
                 <input type="hidden" name="id" value="<?= e($product->getId()) ?>">
                 <label for="nom" class="admin-products__label">Nom du produit</label>
@@ -28,7 +28,8 @@
 
             <div class="admin-products__field">
                 <label for="url_img" class="admin-products__label">Image</label>
-                <input type="file" name="url_img" id="url_img" class="admin-products__input" value="<?= e($product->getUrl_img()) ?>">
+                <input type="file" name="url_img" id="url_img" class="admin-products__input">
+                <span><?= e($product->getUrl_img()) ?></span>
             </div>
 
 
