@@ -25,11 +25,6 @@
                     <option value="legume">Légume</option>
                 </select>
             </div>
-            <!-- <div class="admin-products__field">
-                <label for="url_img" class="admin-products__label">Lien de l'image</label>
-                <input type="text" name="url_img" id="url_img" class="admin-products__input" value="<?= e($product->getUrl_img()) ?>">
-
-            </div> -->
 
             <div class="admin-products__field">
                 <label for="url_img" class="admin-products__label">Image</label>

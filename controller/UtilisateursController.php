@@ -28,6 +28,7 @@ class UtilisateursController
                 $user->setEmail($_POST['email']);
                 $password = passwordHash($_POST['password']);
                 $user->setPassword($password);
+                $user->setStatut("actif");
 
                 UtilisateursRepository::create($user);
                 $message = "L'inscription a été réalisée avec succès !";

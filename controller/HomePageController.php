@@ -7,7 +7,7 @@ class HomePageController
 
     {
 
-        $produits = ProduitsRepository::findAll();
+        $produits = ProduitsRepository::findAllOnline();
         require './view/accueil.php';
     }
 

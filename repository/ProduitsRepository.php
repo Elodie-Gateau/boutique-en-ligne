@@ -13,13 +13,15 @@ class ProduitsRepository
         prix_unitaire,
         description,
         type,
-        url_img
+        url_img,
+        statut,
         ) VALUES (
         :nom,
         :prix_unitaire,
         :description,
         :type,
-        :url_img
+        :url_img,
+        :statut
         );";
 
         $stmt = $pdo->prepare($sql);
@@ -28,7 +30,8 @@ class ProduitsRepository
             'prix_unitaire' => $product->getPrix(),
             'description' => $product->getDescription(),
             'type' => $product->getType(),
-            'url_img' => $product->getUrl_img()
+            'url_img' => $product->getUrl_img(),
+            'statut' => $product->getStatut()
         ]);
     }
 
@@ -50,6 +53,30 @@ class ProduitsRepository
             $product->setDescription($row['description']);
             $product->setType($row['type']);
             $product->setUrl_img($row['url_img']);
+            $product->setStatut($row['statut']);
+            $products[] = $product;
+        }
+        return $products;
+    }
+    public static function findAllOnline()
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT * FROM produits WHERE statut = 'en ligne'";
+
+        $stmt = $pdo->query($sql);
+
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $products = [];
+
+        foreach ($rows as $row) {
+            $product = new Produit;
+            $product->setId($row['id']);
+            $product->setNom($row['nom']);
+            $product->setPrix($row['prix_unitaire']);
+            $product->setDescription($row['description']);
+            $product->setType($row['type']);
+            $product->setUrl_img($row['url_img']);
+            $product->setStatut($row['statut']);
             $products[] = $product;
         }
         return $products;
@@ -85,6 +112,7 @@ class ProduitsRepository
             $product->setDescription($data['description']);
             $product->setType($data['type']);
             $product->setUrl_img($data['url_img']);
+            $product->setStatut($data['statut']);
         }
 
         return $product;
@@ -108,6 +136,7 @@ class ProduitsRepository
                 $product->setDescription($data['description']);
                 $product->setType($data['type']);
                 $product->setUrl_img($data['url_img']);
+                $product->setStatut($data['statut']);
                 $products[] = $product;
             }
 
@@ -116,22 +145,15 @@ class ProduitsRepository
     }
 
 
-    // public static function delete(Produit $produit)
-    // {
-    //     $pdo = Database::connect();
-    //     $sql = "DELETE FROM produits WHERE id = :id";
-    //     $stmt = $pdo->prepare($sql);
-    //     $stmt->execute([
-    //         'id' => $produit->getId()
-    //     ]);
-    // }
-
-    public static function deleteById(int $id)
+    public static function deleteById(int $id, string $statut)
     {
         $pdo = Database::connect();
-        $sql = "DELETE FROM produits WHERE id = :id";
+        $sql = "UPDATE produits SET statut = :statut WHERE id = :id";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['id' => $id]);
+        $stmt->execute([
+            'id' => $id,
+            'statut' => $statut
+        ]);
     }
 
     public static function search($keyword)
