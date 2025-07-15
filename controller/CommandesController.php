@@ -20,7 +20,6 @@ class CommandesController
             foreach ($panier as $key => $item) {
                 if ($item['id_produit'] === $idProduit && $item['quantite'] > 1) {
                     $panier[$key]['quantite']--;
-                    $panier[$key]['prix_total'] = $panier[$key]['quantite'] * $panier[$key]['prix_unitaire'];
                 } else if ($item['id_produit'] === $idProduit && $item['quantite'] === 1) {
                     unset($panier[$key]);
                 }
@@ -58,6 +57,7 @@ class CommandesController
 
             if (!isset($_SESSION['panier'])) {
                 $panier = [];
+                $panier[] = $item;
             } else {
                 $panier = $_SESSION['panier'];
 
