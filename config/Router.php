@@ -17,7 +17,15 @@ class Router
                     $controller->register();
                     break;
 
+
+
                 // PAGE D'ACCUEIL
+                case "":
+                    header('Location: index.php?page=accueil');
+                    exit;
+                    break;
+
+
                 case 'accueil':
                     $controller = new HomePageController();
                     $controller->homeProducts();
@@ -166,6 +174,9 @@ class Router
                     echo 'Page not found';
                     break;
             }
+        } else {
+            header('Location: index.php?page=accueil');
+            exit;
         }
     }
 }

@@ -94,7 +94,7 @@ class ProduitsRepository
     public static function findByName($name)
     {
         $pdo = Database::connect();
-        $stmt = $pdo->prepare("SELECT * FROM produits WHERE nom = :name");
+        $stmt = $pdo->prepare("SELECT * FROM produits WHERE nom LIKE :name");
         $stmt->execute(['name' => $name]);
         $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
