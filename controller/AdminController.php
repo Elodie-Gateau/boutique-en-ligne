@@ -13,7 +13,14 @@ class AdminController
     {
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $id = (int)$_GET['id'];
-            UtilisateursRepository::deleteById($id);
+            $user = UtilisateursRepository::findById($id);
+            $userStatut = $user->getStatut();
+            if ($userStatut === "actif") {
+                $statut = "inactif";
+            } else if ($userStatut === "inactif") {
+                $statut = "actif";
+            }
+            UtilisateursRepository::deleteById($id, $statut);
         }
         header('Location: index.php?page=adminDashboard');
         exit;
@@ -43,14 +50,30 @@ class AdminController
 
     public function modifierProduit()
     {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $product = new Produit();
+            $product = ProduitsRepository::findById((int)$_POST['id']);
+            $url_img = $product->getUrl_img();
+
+            if (isset($_FILES['url_img'])) {
+                $tmpName = $_FILES['url_img']['tmp_name'];
+                $fileName = basename($_FILES['url_img']['name']);
+                $destination = 'public/images/products/' . $fileName;
+
+                if (move_uploaded_file($tmpName, $destination)) {
+                    $url_img = $destination;
+                } else {
+                    $message = "Erreur lors de l'envoi de l'image.";
+                }
+            }
+
+
             $product->setId((int)$_POST['id']);
             $product->setNom($_POST['nom']);
             $product->setPrix($_POST['prix_unitaire']);
             $product->setDescription($_POST['description']);
             $product->setType($_POST['type']);
-            $product->setUrl_img($_POST['url_img']);
+            $product->setUrl_img($url_img);
 
             ProduitsRepository::update($product);
             header('Location: index.php?page=adminDashboard');

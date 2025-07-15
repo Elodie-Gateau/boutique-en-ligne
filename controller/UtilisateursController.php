@@ -20,6 +20,7 @@ class UtilisateursController
             $user->setEmail($_POST['email']);
             $password = passwordHash($_POST['password']);
             $user->setPassword($password);
+            $user->setStatut("actif");
 
             $errors = verifyForm(
                 $user->setNom($_POST['nom']),

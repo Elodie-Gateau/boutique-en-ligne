@@ -27,6 +27,7 @@ class ProduitsController
             $product->setDescription($_POST['description']);
             $product->setType($_POST['type']);
             $product->setUrl_img($url_img);
+            $product->setStatut("en ligne");
 
             ProduitsRepository::insert($product);
 
@@ -40,7 +41,14 @@ class ProduitsController
     {
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $id = (int)$_GET['id'];
-            ProduitsRepository::deleteById($id);
+            $product = ProduitsRepository::findById($id);
+            $productStatut = $product->getStatut();
+            if ($productStatut === "en ligne") {
+                $statut = "hors ligne";
+            } else if ($productStatut === "hors ligne") {
+                $statut = "en ligne";
+            }
+            ProduitsRepository::deleteById($id, $statut);
         }
 
         header('Location: index.php?page=adminDashboard');

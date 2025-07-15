@@ -11,6 +11,7 @@ class Produit
     private string $description;
     private string $type;
     private string $url_img;
+    private string $statut;
 
     public function getId(): int
     {
@@ -84,6 +85,20 @@ class Produit
     public function setUrl_img($url_img)
     {
         $this->url_img = $url_img;
+
+        return $this;
+    }
+
+
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
 
         return $this;
     }
