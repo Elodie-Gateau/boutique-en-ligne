@@ -14,9 +14,9 @@
         <?php foreach ($detailsCommand as $articles) { ?>
             <tr>
                 <td><?= $articles->getNomProduit() ?></td>
-                <td><?= $articles->getPrixUnitaireProduit() ?> €</td>
+                <td><?= number_format($articles->getPrixUnitaireProduit(), 2, ",", " ") ?> €</td>
                 <td><?= $articles->getQuantite() ?></td>
-                <td><?= $articles->getPrixTotal() ?> €</td>
+                <td><?= number_format($articles->getPrixTotal(), 2, ",", " ") ?> €</td>
                 <td></td>
             </tr>
         <?php } ?>
@@ -25,7 +25,7 @@
             <td></td>
             <td></td>
             <td>Total de la commande</td>
-            <td><?= $commande->getTotal() ?> €</td>
+            <td><?= number_format($commande->getTotal(), 2, ",", " ") ?> €</td>
         </tr>
 
     </table>

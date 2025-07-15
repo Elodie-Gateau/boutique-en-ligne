@@ -10,7 +10,7 @@ class Utilisateur
     private string $prenom;
     private string $email;
     private string $password;
-    private bool $admin;
+    private bool $admin = false;
 
     public function getId(): int
     {

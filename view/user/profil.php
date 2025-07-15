@@ -26,7 +26,7 @@
             <tr>
                 <td><?= $commande->getDateCommande() ?></td>
                 <td><?= $commande->getStatut() ?></td>
-                <td><?= $commande->getTotal() ?> €</td>
+                <td><?= number_format($commande->getTotal(), 2, ",", " ") ?> €</td>
                 <td>
                     <form action="index.php?page=detailsCommande" method="POST">
                         <input type="hidden" name="idCommand" value="<?= $commande->getId() ?>">

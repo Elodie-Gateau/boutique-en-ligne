@@ -23,8 +23,8 @@
                     <td class="admin-dashboard__td"><?= e($produit->getDescription()) ?></td>
                     <td class="admin-dashboard__td"><?= e(number_format($produit->getPrix(), 2, ',', ' ')) ?> €</td>
                     <td class="admin-dashboard__td">
-                        <a class="admin-dashboard__action" href="modifierProduit.php?id=<?= $produit->getId() ?>">Modifier</a> |
-                        <a class="admin-dashboard__action" href="index.php?page=supprimerProduit&id=<?= $produit->getId() ?>" onclick="return confirm('Supprimer ce produit ?')">Supprimer</a>
+                        <a class="admin-dashboard__action" href="index.php?page=modifierProduit&id=<?= e($produit->getId()) ?>">Modifier</a> |
+                        <a class="admin-dashboard__action" href="index.php?page=supprimerProduit&id=<?= e($produit->getId()) ?>" onclick="return confirm('Supprimer ce produit ?')">Supprimer</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
