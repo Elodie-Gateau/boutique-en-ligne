@@ -116,15 +116,15 @@ class ProduitsRepository
     }
 
 
-    public static function delete(Produit $produit)
-    {
-        $pdo = Database::connect();
-        $sql = "DELETE FROM produits WHERE id = :id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            'id' => $produit->getId()
-        ]);
-    }
+    // public static function delete(Produit $produit)
+    // {
+    //     $pdo = Database::connect();
+    //     $sql = "DELETE FROM produits WHERE id = :id";
+    //     $stmt = $pdo->prepare($sql);
+    //     $stmt->execute([
+    //         'id' => $produit->getId()
+    //     ]);
+    // }
 
     public static function deleteById(int $id)
     {

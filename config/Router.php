@@ -98,6 +98,7 @@ class Router
                     $controller->validCommand();
                     break;
 
+                // PAGE DETAIL DES COMMANDES
                 case 'detailsCommande':
                     if (!isset($_SESSION['email'])) {
                         header('Location: index.php?page=connexion');
@@ -107,7 +108,12 @@ class Router
                     $controller->findDetailsCommand();
                     break;
 
+                // PAGE MODIFICATION PANIER
                 case 'modifierPanier':
+                    if (!isset($_SESSION['email'])) {
+                        header('Location: index.php?page=connexion');
+                        exit;
+                    }
                     $controller = new CommandesController();
                     $controller->modifierPanier();
                     break;

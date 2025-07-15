@@ -13,13 +13,13 @@ class UtilisateursRepository
             prenom,
             email,
             password
-            -- admin     
+                 
         ) VALUES (
             :nom,
             :prenom,
             :email,
             :password
-            -- :admin
+         
         );";
 
         $stmt = $pdo->prepare($sql);
@@ -29,7 +29,7 @@ class UtilisateursRepository
             'prenom' => $user->getPrenom(),
             'email' => $user->getEmail(),
             'password' => $user->getPassword(),
-            // 'admin' => $user->getAdmin()
+
         ]);
     }
 
@@ -60,9 +60,9 @@ class UtilisateursRepository
             $_SESSION['prenom'] = $userConnected->getPrenom();
             $_SESSION['email'] = $userConnected->getEmail();
             $_SESSION['admin'] = $userBDD['admin'];
+            return true;
         } else {
-            echo "Le nom d'utilisateur ou le mot de passe est incorrecte.";
-            exit;
+            return false;
         }
     }
 
