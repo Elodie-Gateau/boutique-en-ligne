@@ -14,22 +14,22 @@ class UtilisateursController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $user = new Utilisateur;
-            $user->setNom($_POST['nom']);
-            $user->setPrenom($_POST['prenom']);
-            $user->setEmail($_POST['email']);
-            $password = passwordHash($_POST['password']);
-            $user->setPassword($password);
-            $user->setStatut("actif");
-
-            $errors = verifyForm(
-                $user->setNom($_POST['nom']),
-                $user->setPrenom($_POST['prenom']),
-                $user->setEmail($_POST['email']),
-                $user->setPassword($password)
-            );
+            $nom = $_POST['nom'] ?? '';
+            $prenom = $_POST['prenom'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $password = $_POST['password'] ?? '';
+            $errors = verifyForm($nom, $prenom, $email, $password);
 
             if (empty($errors)) {
+
+                $user = new Utilisateur;
+                $user->setNom($_POST['nom']);
+                $user->setPrenom($_POST['prenom']);
+                $user->setEmail($_POST['email']);
+                $password = passwordHash($_POST['password']);
+                $user->setPassword($password);
+                $user->setStatut("actif");
+
                 UtilisateursRepository::create($user);
                 $message = "L'inscription a été réalisée avec succès !";
             }
@@ -50,14 +50,17 @@ class UtilisateursController
             $user->setEmail($_POST['email']);
             $user->setPassword($_POST['password']);
 
-            UtilisateursRepository::select($user);
+            $loginSuccess = UtilisateursRepository::select($user);
 
-
-            header('Location: index.php?page=accueil');
-            exit;
-        } else {
-            require './view/user/connexion.php';
+            if ($loginSuccess) {
+                header('Location: index.php?page=accueil');
+                exit;
+            } else {
+                $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
+            }
         }
+
+        require './view/user/connexion.php';
     }
 
     public function profil()

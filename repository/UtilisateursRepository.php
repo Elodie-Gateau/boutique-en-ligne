@@ -62,9 +62,9 @@ class UtilisateursRepository
             $_SESSION['email'] = $userConnected->getEmail();
             $_SESSION['admin'] = $userBDD['admin'];
             $_SESSION['statut'] = $userBDD['statut'];
+            return true;
         } else {
-            echo "Le nom d'utilisateur ou le mot de passe est incorrecte.";
-            exit;
+            return false;
         }
     }
 
