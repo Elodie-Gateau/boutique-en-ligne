@@ -85,4 +85,35 @@ class CommandesController
             echo "Aucune commande trouvée.";
         }
     }
+
+
+    public function modifierPanier()
+    {
+        if (!isset($_SESSION['panier'])) {
+            $_SESSION['panier'] = [];
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+            $action = $_POST['action'];
+            $idProduit = $_POST['id_produit'];
+
+            // Supprimer un produit
+            if ($action === 'supprimer') {
+                foreach ($_SESSION['panier'] as $key => $article) {
+                    if ($article['id_produit'] == $idProduit) {
+                        unset($_SESSION['panier'][$key]);
+                        break;
+                    }
+                }
+
+                // Réindexer le tableau pour éviter les trous
+                $_SESSION['panier'] = array_values($_SESSION['panier']);
+            }
+
+            // (Optionnel : ajouter une action "modifierQuantite" si tu veux ajouter + / - plus tard)
+        }
+
+        header('Location: index.php?page=panier'); // ou detailCommande selon où tu veux rediriger
+        exit;
+    }
 }
