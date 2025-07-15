@@ -94,6 +94,11 @@ class Router
                     $controller->findDetailsCommand();
                     break;
 
+                case 'modifierPanier':
+                    $controller = new CommandesController();
+                    $controller->modifierPanier();
+                    break;
+
                 // PAGE DE CONNEXION
                 case 'connexion':
                     if (isset($_SESSION['email'])) {

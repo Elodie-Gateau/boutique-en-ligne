@@ -1,6 +1,6 @@
 * {
-    margin: 0;
-    padding: 0;
+    margin: 6px;
+    padding: 0px;
     box-sizing: border-box;
 }
 
@@ -95,9 +95,34 @@ a:hover {
     justify-content: flex-end;
 }
 
-.products__form {
-    display: flex;
-    gap: 10px;
+/* PAGE PRINCIPALE *//* PAGE PRINCIPALE *//* PAGE PRINCIPALE *//* PAGE PRINCIPALE */
+/* PAGE PRINCIPALE *//* PAGE PRINCIPALE *//* PAGE PRINCIPALE *//* PAGE PRINCIPALE */
+/* PAGE PRINCIPALE *//* PAGE PRINCIPALE *//* PAGE PRINCIPALE *//* PAGE PRINCIPALE */
+
+
+.products{
+background-color: whitesmoke;
+width: 100%;
+height: 80%;
+
+}
+.cards{
+    background-color: whitesmoke;
+    border:  solid 2px white
+    
+}
+.main{
+      background-color: lightgreen;
+      outline:  solid 2px rgb(120, 224, 120); 
+      /* border-radius: 5px;  */
+}
+
+.contacts{
+    background-color: whitesmoke;
+    border:  solid 2px white
+}
+.cards, .main, .contacts{
+    border-radius: 5px; 
 }
 
 .products__input {
