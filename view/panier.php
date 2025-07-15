@@ -24,8 +24,32 @@ if (empty($_SESSION['panier'])) {
             <tr>
                 <td> <?= $item['produit_nom']; ?> </td>
                 <td> <?= number_format($item['prix_unitaire'], 2, ',', ''); ?> €</td>
-                <td> <?= $item['quantite']; ?> </td>
+                <td>
+                    <!-- Bouton augmenter la quantite -->
+                    <form method="POST" action="index.php?page=panier">
+                        <input type="hidden" name="action" value="up">
+                        <input type="hidden" name="id_produit" value="<?= $item['id_produit']; ?>">
+                        <input type="submit" value="✚">
+                    </form>
+
+                    <?= $item['quantite']; ?>
+
+                    <!-- Bouton baisser la quantite -->
+                    <form method="POST" action="index.php?page=panier">
+                        <input type="hidden" name="action" value="delete">
+                        <input type="hidden" name="id_produit" value="<?= $item['id_produit']; ?>">
+                        <input type="submit" value="−">
+                    </form>
+                </td>
                 <td> <?= number_format($item['prix_total'], 2, ',', ''); ?> €</td>
+                <td>
+                    <!-- Bouton supprimer du panier -->
+                    <form method="POST" action="index.php?page=panier">
+                        <input type="hidden" name="action" value="delete">
+                        <input type="hidden" name="id_produit" value="<?= $item['id_produit']; ?>">
+                        <input type="submit" value="🗑️">
+                    </form>
+                </td>
             </tr>
             <?php $totalPanier += $item['prix_total'] ?>
         <?php endforeach; ?>
