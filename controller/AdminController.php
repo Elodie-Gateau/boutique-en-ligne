@@ -43,14 +43,31 @@ class AdminController
 
     public function modifierProduit()
     {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $product = new Produit();
+            $produit = ProduitsRepository::findById((int)$_POST['id']);
+            $url_img = $produit->getUrl_img();
+            if (isset($_FILES['url_img'])) {
+
+
+                $tmpName = $_FILES['url_img']['tmp_name'];
+                $fileName = basename($_FILES['url_img']['name']);
+                $destination = 'public/images/products/' . $fileName;
+
+                if (move_uploaded_file($tmpName, $destination)) {
+                    $url_img = $destination;
+                } else {
+                    $message = "Erreur lors de l'envoi de l'image.";
+                }
+            }
+
+            $product = new Produit;
             $product->setId((int)$_POST['id']);
             $product->setNom($_POST['nom']);
             $product->setPrix($_POST['prix_unitaire']);
             $product->setDescription($_POST['description']);
             $product->setType($_POST['type']);
-            $product->setUrl_img($_POST['url_img']);
+            $product->setUrl_img($url_img);
 
             ProduitsRepository::update($product);
             header('Location: index.php?page=adminDashboard');
