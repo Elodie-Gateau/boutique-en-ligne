@@ -41,6 +41,8 @@ class UtilisateursController
     public function log()
     {
 
+        $message = '';
+
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = new Utilisateur;
