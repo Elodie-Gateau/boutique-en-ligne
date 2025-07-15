@@ -38,7 +38,7 @@ class ProduitsRepository
     public static function findAll()
     {
         $pdo = Database::connect();
-        $sql = "SELECT * FROM produits";
+        $sql = "SELECT * FROM produits ORDER BY nom ASC";
 
         $stmt = $pdo->query($sql);
 
@@ -58,10 +58,11 @@ class ProduitsRepository
         }
         return $products;
     }
+
     public static function findAllOnline()
     {
         $pdo = Database::connect();
-        $sql = "SELECT * FROM produits WHERE statut = 'en ligne'";
+        $sql = "SELECT * FROM produits WHERE statut = 'en ligne' ORDER BY nom ASC";
 
         $stmt = $pdo->query($sql);
 

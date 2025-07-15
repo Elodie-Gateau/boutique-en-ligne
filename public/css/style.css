@@ -767,22 +767,25 @@ a:hover {
 
 /* ------FUNCTION RECHERCHE PRODUITS ---- */
 
-.products__search{
+.products__search {
     display: flex;
     justify-content: center;
 }
 
-.products__search-bar{
+.products__search-bar {
     display: flex;
     flex-direction: column;
     text-align: center;
+    gap: 2rem;
 
 }
-.indisponible99 {
-  display: block;
-  justify-content: center; 
-  align-items: center;   
-color: red;
-font-weight: bold;
-text-align: center;
+
+.products__error-message {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+
 }
