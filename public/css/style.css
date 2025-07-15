@@ -449,7 +449,7 @@ a:hover {
 .commande-detail__td--total {
     font-weight: bold;
     color: #20457a;
-    background: #e7f3fd;
+
 }
 
 .profil-dashboard__action,
@@ -575,4 +575,137 @@ a:hover {
     color: #2c497a;
     font-weight: 500;
     font-size: 1.08em;
+}
+
+/* ----- PANIER DASHBOARD ----- */
+
+.panier-dashboard {
+    max-width: 850px;
+    margin: 40px auto 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 18px #0001;
+    padding: 32px 36px 38px 36px;
+}
+
+.panier-dashboard__title {
+    color: #1e375a;
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-align: center;
+}
+
+.panier-dashboard__empty {
+    color: #c11e35;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 25px 0;
+}
+
+.panier-dashboard__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 6px;
+    margin-bottom: 24px;
+    background: #f8fafc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 14px #0001;
+}
+
+.panier-dashboard__th,
+.panier-dashboard__td {
+    padding: 11px 10px;
+    text-align: left;
+}
+
+.panier-dashboard__th {
+    background: #e3eef8;
+    color: #2c497a;
+    font-size: 1em;
+}
+
+.panier-dashboard__td {
+    border-bottom: 1px solid #e0e7ef;
+    font-size: 0.97em;
+}
+
+.panier-dashboard__td--total {
+    font-weight: bold;
+    color: #20457a;
+
+}
+
+.panier-dashboard__qty {
+    display: inline-block;
+    min-width: 1.7em;
+    text-align: center;
+    font-weight: 600;
+    margin: 0 5px;
+    color: #1e375a;
+}
+
+.panier-dashboard__actions {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.panier-dashboard__btn {
+    background: none;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 10px;
+    color: #1e70c1;
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 0 2px;
+    outline: none;
+}
+
+.panier-dashboard__btn--qty:hover {
+    background: #e3eef8;
+}
+
+.panier-dashboard__btn--del:hover {
+    color: #c11e35;
+    background: #fbe9e9;
+}
+
+.panier-dashboard__btn--vider {
+    background: #1e70c1;
+    color: #fff;
+    font-weight: 700;
+    padding: 8px 18px;
+    margin-right: 10px;
+    border: none;
+}
+
+.panier-dashboard__btn--vider:hover {
+    background: #ffeaea;
+    color: #a01414;
+}
+
+.panier-dashboard__form {
+    display: inline;
+}
+
+.panier-dashboard__link {
+    background: #1e70c1;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.panier-dashboard__link:hover {
+    background: #1355a6;
+    color: #fff;
 }
