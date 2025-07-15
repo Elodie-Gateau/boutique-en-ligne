@@ -11,7 +11,6 @@
 
     <div class="products__list">
         <?php
-        var_dump($produits);
         foreach ($produits as $produit): ?>
             <div class="products__card">
                 <img src="<?= $produit->getUrl_img(); ?>" alt="<?= $produit->getNom(); ?>" class="products__img">
