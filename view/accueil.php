@@ -4,6 +4,7 @@
         <form action="index.php?page=search" method="POST" class="products__form">
             <input type="text" name="search_query" class="products__input" placeholder="Rechercher un produit">
             <input type="submit" class="products__submit" value="Rechercher">
+            <a href="index.php?page=accueil">Réinitialiser</a>
         </form>
 
     </div>
