@@ -12,14 +12,22 @@
 
 <section class="products">
 
-    <div class="products__search-bar">
-        <form action="index.php?page=search" method="POST" class="products__form">
-            <input type="text" name="search_query" class="products__input" placeholder="Rechercher un produit">
-            <input type="submit" class="products__submit" value="Rechercher">
-            <a href="index.php?page=accueil" class="products__submit products__submit--reset">Réinitialiser</a>
+    <div class="products__search">
 
-        </form>
+        <div class="products__search-bar">
+            <form action="index.php?page=search" method="POST" class="products__form">
+                <input type="text" name="search_query" class="products__input" placeholder="Rechercher un produit">
+                <input type="submit" class="products__submit" value="Rechercher">
+                <a href="index.php?page=accueil" class="products__submit products__submit--reset">Réinitialiser</a>
+            </form>
 
+            <?php foreach ($produits ?? [] as $produit): ?>
+            <?php endforeach; ?>
+            <?php if (empty($produits)): ?>
+
+                <p class="indisponible99">Aucun produit ne correspond à votre recherche.</p>
+            <?php endif; ?>
+        </div>
     </div>
 
 
