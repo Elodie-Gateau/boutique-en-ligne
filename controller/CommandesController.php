@@ -18,8 +18,23 @@ class CommandesController
             $panier = $_SESSION['panier'];
 
             foreach ($panier as $key => $item) {
+                if ($item['id_produit'] === $idProduit) {
+                    unset($panier[$key]);
+                }
+            }
+            $panier = array_values($panier);
+            $_SESSION['panier'] = $panier;
+        }
+        // Baisser la quantité
+        else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'down') {
+            $idProduit = $_POST['id_produit'];
+
+            $panier = $_SESSION['panier'];
+
+            foreach ($panier as $key => $item) {
                 if ($item['id_produit'] === $idProduit && $item['quantite'] > 1) {
                     $panier[$key]['quantite']--;
+                    $panier[$key]['prix_total'] = $panier[$key]['quantite'] * $panier[$key]['prix_unitaire'];
                 } else if ($item['id_produit'] === $idProduit && $item['quantite'] === 1) {
                     unset($panier[$key]);
                 }
