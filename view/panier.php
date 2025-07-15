@@ -28,7 +28,7 @@
                         <span class="panier-dashboard__qty"><?= $item['quantite']; ?></span>
 
                         <form method="POST" action="index.php?page=panier" class="panier-dashboard__form" style="display:inline;">
-                            <input type="hidden" name="action" value="delete">
+                            <input type="hidden" name="action" value="down">
                             <input type="hidden" name="id_produit" value="<?= $item['id_produit']; ?>">
                             <input type="submit" class="panier-dashboard__btn panier-dashboard__btn--qty" value="−">
                         </form>

@@ -25,7 +25,7 @@
             <?php endforeach; ?>
             <?php if (empty($produits)): ?>
 
-                <p class="indisponible99">Aucun produit ne correspond à votre recherche.</p>
+                <p class="products__error-message">Aucun produit ne correspond à votre recherche.</p>
             <?php endif; ?>
         </div>
     </div>
